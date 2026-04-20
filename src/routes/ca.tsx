@@ -6,6 +6,7 @@ import { InfoCards } from "@/components/site/InfoCards";
 import { NotAll } from "@/components/site/NotAll";
 import { Advantages } from "@/components/site/Advantages";
 import { AppBanner } from "@/components/site/AppBanner";
+import { Pricing } from "@/components/site/Pricing";
 
 export const Route = createFileRoute("/ca")({
   head: () => ({
@@ -38,9 +39,10 @@ function CanadaPage() {
       <NotAll />
       <Advantages />
       <AppBanner />
-      {/* Sections 7–9 will be added one-by-one via MCP imports. */}
+      <Pricing />
+      {/* Sections 8–9 will be added one-by-one via MCP imports. */}
       <div className="mx-auto max-w-[900px] px-8 py-24 text-center text-sm text-black/40">
-        Next: Pricing → FAQ → Footer.
+        Next: FAQ → Footer.
       </div>
     </main>
   );
