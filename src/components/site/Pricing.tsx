@@ -1,0 +1,171 @@
+import { Check, DollarSign } from "lucide-react";
+import beaverWeek from "@/assets/figma/pr-beaver-week.webp";
+import beaverMonth from "@/assets/figma/pr-beaver-month.webp";
+import beaverYear from "@/assets/figma/pr-beaver-year.webp";
+
+const features = [
+  "Mobile & Web Apps with Real-Time Sync",
+  "AI-Powered Expense Tracking",
+  "Send Receipts via Email",
+  "Secure Storage for 10+ Years",
+  "Bulk Upload (drag & drop)",
+  "Mileage Tracking & Trip Organization",
+  "Export Reports (PDF, CSV)",
+];
+
+type Plan = {
+  name: string;
+  desc: string;
+  price: string;
+  per: string;
+  oldPrice: string;
+  image: string;
+  badge?: { label: string; color: "orange" | "green" };
+  ringColor?: string;
+};
+
+const plans: Plan[] = [
+  {
+    name: "Week",
+    desc: "Start saving on taxes today — try it risk-free. Test drive for one week.",
+    price: "CAD 4.99",
+    per: "/week",
+    oldPrice: "CAD 6,49 /week",
+    image: beaverWeek,
+  },
+  {
+    name: "Month",
+    desc: "Track expenses year-round. Flexible monthly plan.",
+    price: "CAD 9.99",
+    per: "/month",
+    oldPrice: "CAD 12,99 /month",
+    image: beaverMonth,
+    badge: { label: "Most Popular", color: "orange" },
+  },
+  {
+    name: "Year",
+    desc: "Best value plan. Save 18% with annual billing.",
+    price: "CAD 99.99",
+    per: "/year",
+    oldPrice: "CAD 129,99 /year",
+    image: beaverYear,
+    badge: { label: "Save 18%", color: "green" },
+    ringColor: "#3aa17e",
+  },
+];
+
+export function Pricing() {
+  return (
+    <section className="mx-auto w-full max-w-[1100px] px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+      {/* Pill */}
+      <div className="flex justify-center">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-black px-4 py-2 font-display text-[12px] font-semibold text-white">
+          <DollarSign className="h-3.5 w-3.5" strokeWidth={2.5} />
+          PRICING
+        </span>
+      </div>
+
+      {/* Title */}
+      <h2 className="mt-5 text-center font-display text-[40px] font-bold leading-[1.05] tracking-[-0.02em] text-black md:text-[56px]">
+        Start Free.
+        <br />
+        Save <span className="text-[#fb9130]">Thousands</span>
+      </h2>
+
+      {/* Subtitle */}
+      <p className="mx-auto mt-4 max-w-[420px] text-center font-display text-[14px] leading-[1.55] text-[#7e8890] md:text-[15px]">
+        Built for freelancers, self-employed, and small businesses in the US &
+        Canada
+      </p>
+
+      {/* What's included */}
+      <h3 className="mt-12 text-center font-display text-[18px] font-bold text-black">
+        What's included in your subscription
+      </h3>
+      <ul className="mx-auto mt-5 grid max-w-[640px] grid-cols-1 gap-x-10 gap-y-3 sm:grid-cols-2">
+        {features.map((f) => (
+          <li
+            key={f}
+            className="flex items-start gap-2 font-display text-[13px] text-black/80"
+          >
+            <Check
+              className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#3aa17e]"
+              strokeWidth={2.5}
+            />
+            <span>{f}</span>
+          </li>
+        ))}
+      </ul>
+
+      {/* Plans */}
+      <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {plans.map((p) => (
+          <PlanCard key={p.name} plan={p} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function PlanCard({ plan }: { plan: Plan }) {
+  const ringStyle = plan.ringColor
+    ? { boxShadow: `inset 0 0 0 1.5px ${plan.ringColor}` }
+    : undefined;
+
+  return (
+    <article
+      className="relative flex flex-col overflow-hidden rounded-[24px] bg-white"
+      style={ringStyle}
+    >
+      {/* Badge */}
+      {plan.badge && (
+        <span
+          className={`absolute -top-3 left-6 inline-flex items-center rounded-full px-3 py-1 font-display text-[11px] font-semibold text-white ${
+            plan.badge.color === "orange" ? "bg-[#fb9130]" : "bg-[#3aa17e]"
+          }`}
+        >
+          {plan.badge.label}
+        </span>
+      )}
+
+      <div className="px-6 pt-7 pb-5">
+        <h3 className="font-display text-[24px] font-bold leading-tight text-black">
+          {plan.name}
+        </h3>
+        <p className="mt-2 min-h-[40px] font-display text-[13px] leading-[1.4] text-[#7e8890]">
+          {plan.desc}
+        </p>
+
+        <div className="mt-5 flex items-baseline gap-1">
+          <span className="font-display text-[28px] font-bold leading-none text-black">
+            {plan.price}
+          </span>
+          <span className="font-display text-[13px] text-[#7e8890]">
+            {plan.per}
+          </span>
+        </div>
+        <div className="mt-1 font-display text-[12px] text-[#9192a1] line-through">
+          {plan.oldPrice}
+        </div>
+
+        <button
+          type="button"
+          className="mt-5 w-full rounded-full bg-black py-3 font-display text-[14px] font-semibold text-white transition hover:bg-black/85"
+        >
+          Subscribe
+        </button>
+      </div>
+
+      {/* Beaver */}
+      <div className="mt-auto flex items-end justify-center px-3 pb-0">
+        <img
+          src={plan.image}
+          alt={`${plan.name} plan beaver`}
+          loading="lazy"
+          className="block h-auto w-full max-w-[260px] select-none object-contain"
+          draggable={false}
+        />
+      </div>
+    </article>
+  );
+}
