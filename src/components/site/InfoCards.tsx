@@ -1,4 +1,5 @@
 import widgetReceipts from "@/assets/figma/widget-receipts.svg";
+import widgetReports from "@/assets/figma/widget-reports.svg";
 import phoneReports from "@/assets/figma/ic-phone-reports.webp";
 import phoneExport from "@/assets/figma/ic-phone-export.webp";
 import phoneHomeOffice from "@/assets/figma/ic-phone-home-office.webp";
@@ -46,12 +47,13 @@ export function InfoCards() {
             title="Your receipts and expenses are under complete control"
             body="ReceiptOne instantly recognizes receipts and sorts them by category. Don't miss out on deductions for home office and gas expenses. The app will automatically collect evidence for the tax office while you're on vacation."
           />
-          <FeatureRow
-            imageSide="right"
-            visual={<PhoneVisual src={phoneReports} alt="Reports list on a phone" />}
-            title="Create reports anytime"
-            body="If you need to prepare a report for a month or a year, for a specific seller, category, amount, or payment method — you can do it in just a couple of clicks in the app or web version."
-          />
+          <div className="overflow-hidden rounded-[32px]">
+            <img
+              src={widgetReports}
+              alt="Create reports anytime — Reports list on a phone"
+              className="block h-auto w-full"
+            />
+          </div>
           <FeatureRow
             imageSide="left"
             visual={<ScanVisual />}
