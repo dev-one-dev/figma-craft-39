@@ -14,9 +14,9 @@ export function AppBanner() {
   return (
     <section className="mx-auto w-full max-w-[1200px] px-6 py-12 md:py-16">
       <div className="relative overflow-hidden rounded-[40px] bg-[#0d0d0d] text-white">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-6">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-0">
           {/* Left: copy + QR + store buttons */}
-          <div className="px-8 pt-12 pb-8 md:px-12 md:pt-16 md:pb-12 lg:pb-16">
+          <div className="px-8 pt-12 pb-10 md:px-12 md:pt-14 md:pb-12 lg:pt-12 lg:pb-12">
             <h2 className="font-display text-[34px] font-bold leading-[1.05] tracking-[-0.02em] md:text-[44px] lg:text-[48px]">
               Get your personal
               <br />
@@ -88,14 +88,14 @@ export function AppBanner() {
             </div>
           </div>
 
-          {/* Right: two phones */}
-          <div className="relative h-[360px] sm:h-[420px] lg:h-auto lg:min-h-[440px]">
-            {/* Android phone — slightly behind, left */}
-            <div className="pointer-events-none absolute bottom-[-40px] left-[6%] w-[55%] max-w-[260px] sm:left-[8%] sm:bottom-[-30px] lg:bottom-[-60px] lg:left-[2%] lg:w-[260px]">
+          {/* Right: two phones — anchored to bottom, tops extend toward card top */}
+          <div className="relative h-[320px] sm:h-[380px] lg:h-[400px]">
+            {/* Android phone — behind, left, slightly lower */}
+            <div className="pointer-events-none absolute bottom-0 left-[8%] w-[46%] max-w-[240px] sm:left-[10%] lg:left-[4%] lg:w-[240px]">
               <PhoneMock frame={frameAndroid} screen={screenMileage} alt="ReceiptOne mileage screen on Android" />
             </div>
-            {/* iPhone — front, right */}
-            <div className="pointer-events-none absolute bottom-[-50px] right-[4%] w-[58%] max-w-[280px] sm:bottom-[-40px] lg:bottom-[-80px] lg:right-[6%] lg:w-[280px]">
+            {/* iPhone — front, right, taller */}
+            <div className="pointer-events-none absolute -bottom-2 right-[4%] w-[50%] max-w-[260px] sm:right-[6%] lg:right-[6%] lg:w-[260px]">
               <PhoneMock frame={frameIphone} screen={screenReceipts} alt="ReceiptOne receipts screen on iPhone" />
             </div>
           </div>
