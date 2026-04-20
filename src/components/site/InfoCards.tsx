@@ -1,6 +1,4 @@
-import logoEsso from "@/assets/figma/logo-esso.jpg";
-import logoMcdonalds from "@/assets/figma/ic-logo-mcdonalds.webp";
-import logoSaudia from "@/assets/figma/logo-saudia.jpg";
+import widgetReceipts from "@/assets/figma/widget-receipts.svg";
 import phoneReports from "@/assets/figma/ic-phone-reports.webp";
 import phoneExport from "@/assets/figma/ic-phone-export.webp";
 import phoneHomeOffice from "@/assets/figma/ic-phone-home-office.webp";
