@@ -87,6 +87,27 @@ function Avatar({
 function DashedLoop({ className }: { className?: string }) {
   return (
     <svg
+      viewBox="0 0 220 140"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      width={220}
+      height={140}
+      aria-hidden="true"
+    >
+      <path
+        d="M210 130 C 110 150, 10 110, 30 60 C 45 20, 110 10, 130 50 C 145 80, 110 100, 80 80"
+        stroke="#9192a1"
+        strokeWidth="1.2"
+        strokeDasharray="4 5"
+        strokeLinecap="round"
+        fill="none"
+      />
+    </svg>
+  );
+}
+  return (
+    <svg
       viewBox="0 0 320 120"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
