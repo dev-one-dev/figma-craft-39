@@ -6,6 +6,7 @@ import { InfoCards } from "@/components/site/InfoCards";
 import { NotAll } from "@/components/site/NotAll";
 import { Advantages } from "@/components/site/Advantages";
 import { AppBanner } from "@/components/site/AppBanner";
+import { Pricing } from "@/components/site/Pricing";
 
 export const Route = createFileRoute("/ca")({
   head: () => ({
