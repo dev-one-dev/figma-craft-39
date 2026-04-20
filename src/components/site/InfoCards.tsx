@@ -324,11 +324,12 @@ function DottedBg() {
   return (
     <div
       aria-hidden="true"
-      className="absolute inset-0 opacity-40"
+      className="absolute inset-0 opacity-50"
       style={{
-        backgroundImage:
-          "radial-gradient(circle, rgba(0,0,0,0.08) 1px, transparent 1px)",
-        backgroundSize: "16px 16px",
+        backgroundImage: `url(${doodleBg})`,
+        backgroundSize: "480px 480px",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
       }}
     />
   );
