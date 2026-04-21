@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import logoMark from "@/assets/figma/logo-mark.svg";
 import logoWordmark from "@/assets/figma/logo-wordmark.svg";
 
@@ -7,6 +8,30 @@ import logoWordmark from "@/assets/figma/logo-wordmark.svg";
  * Pill nav, max-width 900px, white bg, soft shadow stack, 12px padding.
  */
 export function Header() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isUS = location.pathname.startsWith("/us");
+  const current: "ca" | "us" = isUS ? "us" : "ca";
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onClick(e: MouseEvent) {
+      if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, []);
+
+  const select = (region: "ca" | "us") => {
+    setOpen(false);
+    if (region !== current) {
+      navigate({ to: region === "ca" ? "/ca" : "/us" });
+    }
+  };
+
   return (
     <header className="flex w-full justify-center px-8 pt-8">
       <nav
@@ -18,7 +43,7 @@ export function Header() {
         aria-label="Primary"
       >
         {/* Logo container — fixed 250px to balance the right cluster */}
-        <Link to="/ca" className="flex w-[250px] shrink-0 items-center gap-2">
+        <Link to={isUS ? "/us" : "/ca"} className="flex w-[250px] shrink-0 items-center gap-2">
           <LogoMark />
           <LogoWordmark />
         </Link>
@@ -49,14 +74,47 @@ export function Header() {
 
         {/* Right cluster */}
         <div className="flex w-[250px] shrink-0 items-center justify-end gap-3">
-          <button
-            type="button"
-            className="flex items-center gap-1 font-display text-sm font-semibold leading-5 text-black"
-            aria-label="Change language"
-          >
-            <FlagCanada className="size-6" />
-            <span>EN</span>
-          </button>
+          <div ref={wrapRef} className="relative">
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              className="flex items-center gap-1 font-display text-sm font-semibold leading-5 text-black"
+              aria-label="Change region"
+              aria-haspopup="menu"
+              aria-expanded={open}
+            >
+              {current === "ca" ? <FlagCanada className="size-6" /> : <FlagUSA className="size-6" />}
+              <span>{current === "ca" ? "CA" : "US"}</span>
+              <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden>
+                <path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            {open && (
+              <div
+                role="menu"
+                className="absolute right-0 top-full z-50 mt-2 w-36 overflow-hidden rounded-xl border border-black/10 bg-white shadow-lg"
+              >
+                <button
+                  role="menuitem"
+                  type="button"
+                  onClick={() => select("ca")}
+                  className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-black/5"
+                >
+                  <FlagCanada className="size-5" />
+                  <span>Canada</span>
+                </button>
+                <button
+                  role="menuitem"
+                  type="button"
+                  onClick={() => select("us")}
+                  className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-black/5"
+                >
+                  <FlagUSA className="size-5" />
+                  <span>USA</span>
+                </button>
+              </div>
+            )}
+          </div>
           <button
             type="button"
             className="rounded-xl border border-black px-5 py-2 font-display text-sm font-semibold leading-5 text-black transition-colors hover:bg-black/5"
