@@ -2,7 +2,7 @@ import pricingSvg from "@/assets/figma/pricing.svg";
 
 export function Pricing() {
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-6">
+    <section id="pricing" className="mx-auto w-full max-w-[1440px] scroll-mt-28 px-6">
       {/* Crop bottom whitespace baked into the SVG (1440x1632 viewBox, content ends ~y=1110) */}
       <div
         className="relative w-full overflow-hidden"
