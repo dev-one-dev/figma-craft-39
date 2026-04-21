@@ -14,6 +14,14 @@ export function Header() {
   const current: "ca" | "us" = isUS ? "us" : "ca";
   const [open, setOpen] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     function onClick(e: MouseEvent) {
@@ -41,13 +49,13 @@ export function Header() {
   };
 
   return (
-    <header className="flex w-full justify-center px-8 pt-8">
+    <header className="fixed inset-x-0 top-0 z-50 flex w-full justify-center px-8 pt-4 transition-all duration-300">
       <nav
-        className="flex w-full max-w-[900px] items-center justify-between rounded-[20px] border border-black/[0.12] bg-white p-3"
-        style={{
-          boxShadow:
-            "0 22px 48px 0 rgba(122,122,122,0.10), 0 87px 87px 0 rgba(122,122,122,0.09), 0 196px 118px 0 rgba(122,122,122,0.05), 0 349px 139px 0 rgba(122,122,122,0.01)",
-        }}
+        className={`flex w-full max-w-[900px] items-center justify-between rounded-[20px] border p-3 backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 ${
+          scrolled
+            ? "border-black/[0.08] bg-white/70 shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
+            : "border-transparent bg-white/40"
+        }`}
         aria-label="Primary"
       >
         {/* Logo container — fixed 250px to balance the right cluster */}
