@@ -1,4 +1,5 @@
 import eagleHeroVideo from "@/assets/figma/hero-eagle.mp4";
+import eagleHeroVideoTransparent from "@/assets/figma/hero-eagle-transparent.webm";
 import avatar1 from "@/assets/figma/avatar-1.webp";
 import avatar2 from "@/assets/figma/avatar-2.webp";
 import avatar3 from "@/assets/figma/avatar-3.webp";
@@ -44,14 +45,17 @@ export function TopBannerUS() {
 
         <div className="relative w-full">
           <video
-            src={eagleHeroVideo}
-            className="mx-auto block w-full max-w-[640px] mix-blend-multiply [mask-image:radial-gradient(ellipse_at_center,_black_60%,_transparent_100%)]"
+            style={{ background: "transparent" }}
+            className="mx-auto block w-full max-w-[1200px] bg-transparent object-contain"
             autoPlay
             loop
             muted
             playsInline
             aria-label="Eagle mascot wearing a USA cap, reading a receipt"
-          />
+          >
+            <source src={eagleHeroVideoTransparent} type="video/webm" />
+            <source src={eagleHeroVideo} type="video/mp4" />
+          </video>
         </div>
 
         <div className="group/users relative flex cursor-pointer items-center gap-[9px] rounded-2xl px-3 py-2 transition-all duration-500 ease-out hover:bg-black/[0.03] hover:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.18)]">
