@@ -193,27 +193,50 @@ html { scroll-behavior: smooth; }
 /* ============================================================
  * Scroll reveal animations
  * Used by useRevealOnScroll hook on /ca and /us.
+ * - Soft easing, smaller translate for a modern feel
+ * - Subtle glow flash at the moment of reveal
  * ============================================================ */
 .reveal {
   opacity: 0;
-  transform: translate3d(0, 28px, 0);
+  transform: translate3d(0, 14px, 0) scale(0.992);
+  filter: blur(2px);
   transition:
-    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 1.4s ease-out;
   transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
+  will-change: opacity, transform, filter;
+  border-radius: inherit;
 }
 
 .reveal-visible {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+  animation: revealGlow 1.6s cubic-bezier(0.16, 1, 0.3, 1)
+    var(--reveal-delay, 0ms) both;
+}
+
+@keyframes revealGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+  }
+  35% {
+    box-shadow: 0 18px 60px -20px rgba(249, 115, 22, 0.28);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
     transition: none !important;
+    animation: none !important;
   }
 }
 
