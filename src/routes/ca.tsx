@@ -41,7 +41,7 @@ function CanadaPage() {
       data-reveal-root
       className="min-h-screen bg-[#f5f4f0] font-sans text-black antialiased"
     >
-      <Header data-reveal-skip />
+      <div data-reveal-skip><Header /></div>
       <div data-reveal><TopBanner /></div>
       <div data-reveal><Numbers /></div>
       <div data-reveal><InfoCards /></div>
