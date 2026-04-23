@@ -29,7 +29,7 @@ export function Numbers() {
     let lastTime = 0;
     let offset = 0;
     let groupWidth = group.offsetWidth;
-    const speed = 38;
+    const speed = 84;
 
     const resizeObserver = new ResizeObserver(() => {
       groupWidth = group.offsetWidth;
@@ -88,9 +88,11 @@ export function Numbers() {
                 className="numbers-group"
                 aria-hidden={copy === 1}
               >
+                <div className="numbers-spacer" aria-hidden="true" />
                 {STATS.map((s) => (
                   <Stat key={`${copy}-${s.label}`} value={s.value} label={s.label} />
                 ))}
+                <div className="numbers-spacer" aria-hidden="true" />
               </div>
             ))}
           </div>
@@ -103,11 +105,13 @@ export function Numbers() {
 
 function Stat({ value, label }: { value: string; label: string }) {
   return (
-    <div className="flex shrink-0 flex-col items-start whitespace-nowrap">
+    <div className="flex min-w-[122px] shrink-0 flex-col items-start sm:min-w-[138px] md:min-w-[156px]">
       <p className="font-display text-2xl font-semibold leading-8 tracking-[-0.01em] text-foreground sm:text-[28px] md:text-[32px]">
         {value}
       </p>
-      <p className="font-display text-sm leading-6 text-muted-foreground md:text-base">{label}</p>
+      <p className="max-w-[12ch] text-pretty font-display text-sm leading-5 text-muted-foreground md:text-base md:leading-6">
+        {label}
+      </p>
     </div>
   );
 }
