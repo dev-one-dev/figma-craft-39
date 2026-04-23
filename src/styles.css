@@ -148,6 +148,15 @@ html { scroll-behavior: smooth; }
   }
 }
 
+@keyframes numbers-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 .numbers-pill {
   --marquee-gap: 3rem;
 }
