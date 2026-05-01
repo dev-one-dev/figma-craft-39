@@ -5,11 +5,13 @@ import logoMark from "@/assets/figma/logo-mark.svg";
 import logoWordmark from "@/assets/figma/logo-wordmark.svg";
 import {
   AnchorButton,
+  LegalSummary,
   PrintButton,
   RegionParagraph,
   RegionSwitcher,
   RegionTag,
   useLegalUIState,
+  type SummaryItem,
   type Region,
 } from "@/components/site/legal/shared";
 
@@ -972,7 +974,7 @@ function TermsPage() {
           </div>
         </header>
 
-        <div className="grid gap-10 py-10 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-14">
+        <div className="grid gap-10 py-10 lg:grid-cols-[240px_minmax(0,1fr)_280px] lg:gap-10">
           <aside className="hidden lg:block">
             <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-2">
               <TableOfContents region={region} onJump={scrollToId} />
@@ -992,6 +994,16 @@ function TermsPage() {
               />
             ))}
           </div>
+
+          <aside className="hidden lg:block">
+            <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-1">
+              <LegalSummary
+                subtitle="Terms of Use"
+                items={TERMS_SUMMARY}
+                region={region}
+              />
+            </div>
+          </aside>
         </div>
       </article>
 
