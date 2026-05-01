@@ -954,7 +954,7 @@ function TermsPage() {
               <button
                 type="button"
                 onClick={expandAll}
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground print:hidden"
               >
                 <ChevronsUpDown className="size-4" />
                 Expand all
@@ -962,11 +962,12 @@ function TermsPage() {
               <button
                 type="button"
                 onClick={collapseAll}
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground print:hidden"
               >
                 <ChevronsDownUp className="size-4" />
                 Collapse all
               </button>
+              <PrintButton onBeforePrint={handleBeforePrint} onAfterPrint={handleAfterPrint} />
             </div>
           </div>
         </header>
