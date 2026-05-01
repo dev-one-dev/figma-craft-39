@@ -5,10 +5,12 @@ import logoMark from "@/assets/figma/logo-mark.svg";
 import logoWordmark from "@/assets/figma/logo-wordmark.svg";
 import {
   AnchorButton,
+  LegalSummary,
   PrintButton,
   RegionSwitcher,
   RegionTag,
   useLegalUIState,
+  type SummaryItem,
   type Region,
 } from "@/components/site/legal/shared";
 
@@ -74,6 +76,48 @@ const SUBSECTION_REGIONS: RegionMap = SECTIONS.reduce<RegionMap>((acc, s) => {
 
 const sectionAnchorId = (n: string) => `section-${n}`;
 const subsectionAnchorId = (id: string) => `section-${id.replace(".", "-")}`;
+
+const PRIVACY_SUMMARY: SummaryItem[] = [
+  {
+    title: "What we collect",
+    body: "Account info, receipts/expenses you upload, OCR-extracted data, device & usage diagnostics, and limited subscription metadata from Apple/Google.",
+  },
+  {
+    title: "How we use it",
+    body: "To run the Services, process receipts via OCR/AI, generate reports, secure accounts, and comply with the law. No selling of personal info.",
+  },
+  {
+    title: "AI processing",
+    body: "OCR and AI-assisted features extract and classify data on your behalf. You can review and correct outputs.",
+  },
+  {
+    title: "Sharing",
+    body: "Limited to service providers (hosting, analytics, payments) under contract, plus legal/compliance disclosures when required.",
+  },
+  {
+    title: "Your rights",
+    body: "Access, correction, deletion, portability, and the right to withdraw consent. Submit requests to support@receipt-one.com.",
+    region: "all",
+  },
+  {
+    title: "Quebec & PIPEDA rights",
+    body: "Includes data portability, the right to be informed of automated decisions, and the right to file a complaint with the OPC or CAI.",
+    region: "ca",
+  },
+  {
+    title: "California (CCPA/CPRA)",
+    body: "Right to know, delete, correct, and limit use of sensitive personal info. We do not sell or share for cross-context advertising.",
+    region: "us",
+  },
+  {
+    title: "Retention & security",
+    body: "Retained only as long as needed for the Services and legal obligations. Encrypted in transit and at rest with access controls.",
+  },
+  {
+    title: "Contact",
+    body: "Questions or privacy requests: support@receipt-one.com.",
+  },
+];
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -240,7 +284,7 @@ function PrivacyPage() {
           </div>
         </header>
 
-        <div className="grid gap-10 py-10 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-14">
+        <div className="grid gap-10 py-10 lg:grid-cols-[240px_minmax(0,1fr)_280px] lg:gap-10">
           <aside className="hidden lg:block">
             <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-2">
               <PrivacyTOC region={region} onJump={scrollToId} />
@@ -766,6 +810,16 @@ function PrivacyPage() {
           </Section>
           </div>
           </PrivacyContext.Provider>
+
+          <aside className="hidden lg:block">
+            <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-1">
+              <LegalSummary
+                subtitle="Privacy Policy"
+                items={PRIVACY_SUMMARY}
+                region={region}
+              />
+            </div>
+          </aside>
         </div>
       </article>
 

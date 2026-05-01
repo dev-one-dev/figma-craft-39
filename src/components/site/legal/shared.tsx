@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
-import { Check, Link2, Printer } from "lucide-react";
+import { Check, Link2, Printer, Sparkles } from "lucide-react";
 
 export type Region = "all" | "us" | "ca";
 
@@ -291,3 +291,74 @@ export function useHydrated() {
 }
 
 export const useStable = <T,>(value: T): T => useMemo(() => value, [value]);
+
+/* --------------------------------- Summary -------------------------------- */
+
+/**
+ * Compact, region-aware "TL;DR" sidebar shown to the right of /terms and
+ * /privacy. Highlights the key takeaways so users can grasp the document
+ * before diving into the full text.
+ */
+export type SummaryItem = {
+  title: string;
+  body: string;
+  region?: Region; // omit or "all" = always shown
+};
+
+export function LegalSummary({
+  title = "Summary",
+  subtitle,
+  items,
+  region,
+}: {
+  title?: string;
+  subtitle?: string;
+  items: SummaryItem[];
+  region: Region;
+}) {
+  const visible = items.filter(
+    (i) => !i.region || i.region === "all" || region === "all" || region === i.region,
+  );
+  return (
+    <aside
+      aria-label={title}
+      className="rounded-2xl border border-border bg-card/60 p-5 shadow-sm backdrop-blur"
+    >
+      <div className="mb-4 flex items-center gap-2">
+        <span className="inline-flex size-7 items-center justify-center rounded-full bg-foreground text-background">
+          <Sparkles className="size-3.5" />
+        </span>
+        <div>
+          <p className="font-display text-sm font-semibold tracking-normal text-foreground">
+            {title}
+          </p>
+          {subtitle && (
+            <p className="text-[11px] uppercase tracking-widest text-muted-foreground">
+              {subtitle}
+            </p>
+          )}
+        </div>
+      </div>
+      <ul className="space-y-3">
+        {visible.map((item) => (
+          <li
+            key={item.title}
+            className="rounded-lg border border-border/60 bg-background/60 p-3"
+          >
+            <div className="flex items-start justify-between gap-2">
+              <p className="text-sm font-semibold text-foreground">{item.title}</p>
+              {item.region === "us" && <RegionTag tone="us">US</RegionTag>}
+              {item.region === "ca" && <RegionTag tone="ca">CA</RegionTag>}
+            </div>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              {item.body}
+            </p>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground/80">
+        This summary is for convenience only and does not replace the full document below.
+      </p>
+    </aside>
+  );
+}
