@@ -764,28 +764,191 @@ function PrivacyPage() {
             </div>
             <p className="text-sm text-muted-foreground">© 2026 ReceiptOne. All rights reserved.</p>
           </Section>
+          </div>
+          </PrivacyContext.Provider>
         </div>
       </article>
+
+      {tocOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden print:hidden" role="dialog" aria-modal="true">
+          <div className="absolute inset-0 bg-black/60" onClick={() => setTocOpen(false)} />
+          <div className="absolute right-0 top-0 h-full w-[85%] max-w-sm overflow-y-auto border-l border-border bg-background p-5 shadow-2xl">
+            <div className="mb-4 flex items-center justify-between">
+              <p className="font-display text-lg font-semibold">Contents</p>
+              <button
+                type="button"
+                onClick={() => setTocOpen(false)}
+                className="rounded-full border border-border p-2 transition-colors hover:bg-accent hover:text-accent-foreground"
+                aria-label="Close"
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+            <PrivacyTOC region={region} onJump={scrollToId} />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
 
-function Section({ number, title, children }: { number: string; title: string; children: ReactNode }) {
+/* --------------------------------- Context -------------------------------- */
+
+type PrivacyCtx = {
+  region: Region;
+  openSections: Set<string>;
+  toggleSection: (id: string) => void;
+};
+
+const PrivacyContext = React.createContext<PrivacyCtx | null>(null);
+const usePrivacyCtx = () => {
+  const ctx = React.useContext(PrivacyContext);
+  if (!ctx) throw new Error("Section/SubSection must be rendered inside PrivacyContext");
+  return ctx;
+};
+
+/* ----------------------------- Table of contents -------------------------- */
+
+function PrivacyTOC({ region, onJump }: { region: Region; onJump: (id: string) => void }) {
+  const visible = (r?: "us" | "ca") => region === "all" || !r || r === region;
   return (
-    <section className="space-y-4">
-      <div className="space-y-1">
-        <p className="text-sm font-medium text-muted-foreground">Section {number}</p>
-        <h2 className="font-display text-2xl font-semibold tracking-normal sm:text-3xl">{title}</h2>
-      </div>
-      <div className="space-y-4 text-base leading-7 text-muted-foreground">{children}</div>
+    <nav aria-label="Table of contents" className="space-y-5 text-sm">
+      <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+        Privacy Policy
+      </p>
+      <ul className="space-y-3 border-l border-border pl-3">
+        {SECTIONS.map((s) => {
+          const id = sectionAnchorId(s.number);
+          const subs = s.subsections?.filter((ss) => visible(ss.region)) ?? [];
+          return (
+            <li key={s.number}>
+              <div className="group flex items-start gap-1">
+                <button
+                  type="button"
+                  onClick={() => onJump(id)}
+                  className="flex-1 text-left leading-snug text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <span className="mr-1 text-foreground/70">{s.number}.</span>
+                  {s.title}
+                </button>
+                <AnchorButton hash={id} region={region} label={`Copy link to section ${s.number}`} />
+              </div>
+              {subs.length > 0 && (
+                <ul className="mt-1 space-y-1 border-l border-border/60 pl-3">
+                  {subs.map((ss) => {
+                    const sid = subsectionAnchorId(ss.id);
+                    return (
+                      <li key={ss.id}>
+                        <div className="group flex items-start gap-1">
+                          <button
+                            type="button"
+                            onClick={() => onJump(sid)}
+                            className="flex-1 text-left text-xs leading-snug text-muted-foreground/80 transition-colors hover:text-foreground"
+                          >
+                            {ss.title}
+                            {ss.region === "us" && <RegionTag tone="us">US</RegionTag>}
+                            {ss.region === "ca" && <RegionTag tone="ca">CA</RegionTag>}
+                          </button>
+                          <AnchorButton hash={sid} region={region} label={`Copy link to ${ss.title}`} />
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  );
+}
+
+/* ----------------------------- Section accordion -------------------------- */
+
+function Section({ number, title, children }: { number: string; title: string; children: ReactNode }) {
+  const { openSections, toggleSection } = usePrivacyCtx();
+  const id = sectionAnchorId(number);
+  const isOpen = openSections.has(id);
+  return (
+    <section
+      id={id}
+      className="group/section overflow-hidden rounded-xl border border-border bg-background scroll-mt-24"
+    >
+      <button
+        type="button"
+        onClick={() => toggleSection(id)}
+        aria-expanded={isOpen}
+        aria-controls={`${id}-panel`}
+        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-accent/40 sm:px-5 sm:py-4"
+      >
+        <div className="flex flex-1 items-baseline gap-3">
+          <span className="font-mono text-xs font-semibold text-muted-foreground sm:text-sm">
+            {number.padStart(2, "0")}
+          </span>
+          <h2 className="font-display text-base font-semibold tracking-normal sm:text-lg">{title}</h2>
+        </div>
+        <div className="flex items-center gap-1">
+          <span className="group">
+            <AnchorButton
+              hash={id}
+              region={usePrivacyCtxRegion()}
+              label={`Copy link to section ${number}`}
+              className="opacity-0 group-hover/section:opacity-100"
+            />
+          </span>
+          <ChevronDown
+            className={`size-4 shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`}
+            aria-hidden
+          />
+        </div>
+      </button>
+      {isOpen && (
+        <div
+          id={`${id}-panel`}
+          className="space-y-4 border-t border-border bg-background px-4 py-4 text-base leading-7 text-muted-foreground sm:px-5 sm:py-5"
+        >
+          {children}
+        </div>
+      )}
     </section>
   );
 }
 
+const usePrivacyCtxRegion = () => usePrivacyCtx().region;
+
 function SubSection({ title, children }: { title: string; children: ReactNode }) {
+  const { region } = usePrivacyCtx();
+  // Detect "8.1", "9.2", etc. at the start of the title.
+  const idMatch = title.match(/^(\d+\.\d+)/);
+  const subId = idMatch ? idMatch[1] : title;
+  const anchorId = subsectionAnchorId(subId);
+  const subRegion = SUBSECTION_REGIONS[subId];
+  const applicable = !subRegion || subRegion === "all" || region === "all" || region === subRegion;
+
   return (
-    <section className="space-y-3">
-      <h3 className="font-display text-xl font-semibold tracking-normal text-foreground">{title}</h3>
+    <section
+      id={anchorId}
+      data-region-applicable={applicable ? "true" : "false"}
+      className={`group/sub scroll-mt-24 space-y-3 rounded-lg border p-4 transition-all ${
+        applicable
+          ? "border-border/60 bg-card/40"
+          : "border-dashed border-border/40 bg-muted/10 opacity-60 print:opacity-100"
+      }`}
+    >
+      <div className="flex items-center justify-between gap-2">
+        <h3 className="font-display text-lg font-semibold tracking-normal text-foreground">
+          {title}
+          {subRegion === "us" && <RegionTag tone="us">US</RegionTag>}
+          {subRegion === "ca" && <RegionTag tone="ca">CA</RegionTag>}
+        </h3>
+        <AnchorButton
+          hash={anchorId}
+          region={region}
+          label={`Copy link to ${title}`}
+          className="opacity-0 group-hover/sub:opacity-100"
+        />
+      </div>
       <div className="space-y-3 text-base leading-7 text-muted-foreground">{children}</div>
     </section>
   );
