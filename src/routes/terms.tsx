@@ -3,8 +3,15 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { ChevronDown, ChevronsDownUp, ChevronsUpDown, ListTree, X } from "lucide-react";
 import logoMark from "@/assets/figma/logo-mark.svg";
 import logoWordmark from "@/assets/figma/logo-wordmark.svg";
-
-type Region = "all" | "us" | "ca";
+import {
+  AnchorButton,
+  PrintButton,
+  RegionParagraph,
+  RegionSwitcher,
+  RegionTag,
+  useLegalUIState,
+  type Region,
+} from "@/components/site/legal/shared";
 
 type SectionEntry = {
   number?: string;
