@@ -140,8 +140,7 @@ function AdvantageTile({
           padding: "1px",
           background:
             "linear-gradient(135deg, rgba(59,130,246,0.55), rgba(168,85,247,0.45), rgba(236,72,153,0.4))",
-          WebkitMask:
-            "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+          WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
           WebkitMaskComposite: "xor",
           maskComposite: "exclude",
         }}
@@ -192,7 +191,10 @@ export function Advantages() {
 
   return (
     <section id="benefits" className="w-full scroll-mt-28">
-      <div className="relative w-full" style={{ aspectRatio: "1440 / 1056", perspective: "1400px" }}>
+      <div
+        className="relative w-full"
+        style={{ aspectRatio: "1440 / 1056", perspective: "1400px" }}
+      >
         <img
           src={advantagesSvg}
           alt="What is our advantages — Save 10+ hours, never miss mileage deductions, accountant-ready reports, documentation ready, mobile + web in sync"

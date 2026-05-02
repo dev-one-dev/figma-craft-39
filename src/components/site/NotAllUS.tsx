@@ -158,8 +158,7 @@ function Tile({
           padding: "1px",
           background:
             "linear-gradient(135deg, rgba(59,130,246,0.55), rgba(168,85,247,0.45), rgba(236,72,153,0.4))",
-          WebkitMask:
-            "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+          WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
           WebkitMaskComposite: "xor",
           maskComposite: "exclude",
         }}
@@ -190,11 +189,7 @@ function TileRow({ src, alt, tiles }: { src: string; alt: string; tiles: string[
       role="group"
       aria-label={alt}
     >
-      <img
-        src={src}
-        alt={alt}
-        className="pointer-events-none col-span-3 block h-auto w-full"
-      />
+      <img src={src} alt={alt} className="pointer-events-none col-span-3 block h-auto w-full" />
       {/* Per-card hotspots overlayed on top of the SVG */}
       <div className="pointer-events-none absolute inset-0 grid grid-cols-3 gap-[2.5%] px-[1%]">
         {tiles.map((label, i) => (
