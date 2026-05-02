@@ -17,15 +17,6 @@ const BTN_H = 56;
 const VB_W = 1440;
 const VB_H = 1110;
 
-// Price overlay coords (in viewBox units, matching the SVG glyph baseline ~y=732)
-const PRICE_OVERLAY = {
-  // Week card "$3.62" → "$3.99"
-  x: 256,
-  y: 712,
-  w: 200,
-  h: 56,
-};
-
 export function Pricing({ region = "ca" }: { region?: "ca" | "us" }) {
   const src = region === "us" ? pricingUsSvg : pricingSvg;
   const alt =
