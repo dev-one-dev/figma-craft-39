@@ -14,13 +14,11 @@ export function TopBanner() {
       <div className="relative mx-auto flex w-full max-w-[960px] flex-col items-center gap-6 sm:gap-8">
         <div className="relative flex w-full flex-col items-center gap-3">
           <h1 className="text-center font-display text-[30px] font-semibold leading-[1.08] tracking-[-0.02em] text-black sm:text-[40px] md:text-[52px] lg:text-[56px] xl:text-[64px]">
-            Track expenses, store receipts, and generate tax-ready reports –
-            all in one place
+            Track expenses, store receipts, and generate tax-ready reports – all in one place
           </h1>
 
           <p className="max-w-full px-1 text-center font-display text-base leading-6 tracking-[-0.02em] text-[#9192a1] sm:text-lg sm:leading-7">
-            Built for freelancers, self-employed, and small businesses in the
-            US &amp; Canada
+            Built for freelancers, self-employed, and small businesses in the US &amp; Canada
           </p>
 
           <DashedLoop className="pointer-events-none absolute left-1/2 top-[180px] hidden -translate-x-[340px] md:block" />
@@ -123,12 +121,10 @@ function DashedLoop({ className }: { className?: string }) {
         fill="#9192A1"
         style={{
           transformOrigin: "50% 50%",
-          animation:
-            "loopDraw 1.6s ease-out 0.3s both, loopFloat 4s ease-in-out 2s infinite",
+          animation: "loopDraw 1.6s ease-out 0.3s both, loopFloat 4s ease-in-out 2s infinite",
           clipPath: "inset(0 100% 0 0)",
         }}
       />
     </svg>
   );
 }
-

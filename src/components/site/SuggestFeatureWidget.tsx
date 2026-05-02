@@ -282,10 +282,7 @@ export function SuggestFeatureWidget({ region }: { region: Region }) {
                     </p>
                     <ul className="space-y-2">
                       {preview.similar.map((s) => (
-                        <li
-                          key={s.id}
-                          className="rounded-2xl border border-black/10 bg-white p-3"
-                        >
+                        <li key={s.id} className="rounded-2xl border border-black/10 bg-white p-3">
                           <div className="flex items-start justify-between gap-3">
                             <div className="min-w-0 flex-1">
                               <p className="truncate font-display text-sm font-semibold text-black">
@@ -339,12 +336,10 @@ export function SuggestFeatureWidget({ region }: { region: Region }) {
                 <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-black text-white">
                   <CheckIcon />
                 </div>
-                <p className="font-display text-lg font-semibold text-black">
-                  {successMsg}
-                </p>
+                <p className="font-display text-lg font-semibold text-black">{successMsg}</p>
                 <p className="font-sans text-sm text-black/60">
-                  We review every suggestion. Status will update to Planned or Coming soon
-                  when we pick it up.
+                  We review every suggestion. Status will update to Planned or Coming soon when we
+                  pick it up.
                 </p>
                 <div className="flex flex-col gap-2 sm:flex-row">
                   <button
@@ -391,7 +386,17 @@ function SparkIcon({ className = "size-4" }: { className?: string }) {
 
 function CloseIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
       <path d="M18 6L6 18M6 6l12 12" />
     </svg>
   );
@@ -399,7 +404,17 @@ function CloseIcon() {
 
 function CheckIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
       <path d="M5 12.5l4.5 4.5L19 7" />
     </svg>
   );
@@ -409,7 +424,12 @@ function Spinner() {
   return (
     <svg className="size-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden>
       <circle cx="12" cy="12" r="10" stroke="currentColor" strokeOpacity="0.25" strokeWidth="3" />
-      <path d="M22 12a10 10 0 0 0-10-10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+      <path
+        d="M22 12a10 10 0 0 0-10-10"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
