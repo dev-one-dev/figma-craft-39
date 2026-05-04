@@ -8,9 +8,9 @@ const CARDS = [
   { label: "Year plan", x: 896, btnX: 912, accent: "rgba(34,197,94,0.35)" },
 ] as const;
 
-const CARD_Y = 592;
+const CARD_Y = 624;
 const CARD_W = 304;
-const CARD_H = 576;
+const CARD_H = 544;
 const BTN_Y = 800;
 const BTN_W = 272;
 const BTN_H = 56;
