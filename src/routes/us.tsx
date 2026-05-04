@@ -7,29 +7,49 @@ import { NotAllUS } from "@/components/site/NotAllUS";
 import { Advantages } from "@/components/site/Advantages";
 import { AppBanner } from "@/components/site/AppBanner";
 import { Pricing } from "@/components/site/Pricing";
-import { Faq } from "@/components/site/Faq";
+import { Faq, faqItems } from "@/components/site/Faq";
 import { Footer } from "@/components/site/Footer";
 import { SuggestFeatureWidget } from "@/components/site/SuggestFeatureWidget";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
+import {
+  pageSEO,
+  HREFLANG_US_CA,
+  softwareApplicationJsonLd,
+  breadcrumbJsonLd,
+  faqJsonLd,
+} from "@/lib/seo";
 
 export const Route = createFileRoute("/us")({
-  head: () => ({
-    meta: [
-      { title: "ReceiptOne USA — Track expenses, store receipts, generate tax-ready reports" },
-      {
-        name: "description",
-        content:
-          "Built for freelancers, self-employed, and small businesses in the USA. Track expenses, store receipts and generate tax-ready reports — all in one place.",
-      },
-      { property: "og:title", content: "ReceiptOne USA" },
-      {
-        property: "og:description",
-        content:
-          "Track expenses, store receipts and generate tax-ready reports. Built for US freelancers and small businesses.",
-      },
-      { property: "og:type", content: "website" },
-    ],
-  }),
+  head: () => {
+    const seo = pageSEO({
+      path: "/us",
+      title:
+        "ReceiptOne US | Receipt, Expense & Mileage Tracker for Freelancers",
+      description:
+        "Track receipts, expenses, mileage, and export tax-ready reports for freelancers, contractors, and small businesses in the United States.",
+      ogTitle: "ReceiptOne US | Receipt, Expense & Mileage Tracker",
+      ogDescription:
+        "Track receipts, expenses, mileage, and export tax-ready reports for US freelancers, contractors, and small businesses.",
+      hreflang: HREFLANG_US_CA,
+    });
+    return {
+      meta: seo.meta,
+      links: seo.links,
+      scripts: [
+        { type: "application/ld+json", children: JSON.stringify(softwareApplicationJsonLd("us")) },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", path: "/" },
+              { name: "United States", path: "/us" },
+            ]),
+          ),
+        },
+        { type: "application/ld+json", children: JSON.stringify(faqJsonLd(faqItems)) },
+      ],
+    };
+  },
   component: USAPage,
 });
 
