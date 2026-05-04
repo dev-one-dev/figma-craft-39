@@ -96,7 +96,13 @@ export function TopBanner() {
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(img);
-    return () => ro.disconnect();
+    window.addEventListener("resize", measure);
+    if (!img.complete) img.addEventListener("load", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+      img.removeEventListener("load", measure);
+    };
   }, []);
 
   // One-time injection of the breakpoint stylesheet.
@@ -133,6 +139,17 @@ export function TopBanner() {
             alt="Track expenses, store receipts, and generate tax-ready reports — built for freelancers, self-employed, and small businesses in the US & Canada"
             className="block h-auto w-full select-none"
             draggable={false}
+            onLoad={(e) => {
+              const img = e.currentTarget;
+              const w = img.clientWidth;
+              const h = img.clientHeight;
+              if (w && h) {
+                setBtnPx({
+                  x: (BTN_X / CONTAINER_VB_W) * w,
+                  y: (BTN_Y / CONTAINER_VB_H) * h,
+                });
+              }
+            }}
           />
           <DashedLoopCa
             key={`loop-${loopKey}`}
