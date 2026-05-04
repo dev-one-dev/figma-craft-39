@@ -35,6 +35,7 @@ export const Route = createRootRoute({
       { property: "og:title", content: "Lovable App" },
       { property: "og:description", content: "This application imports and displays Figma designs, enabling interactive elements and dynamic content." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://receipt-one.com/" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Lovable App" },
@@ -44,6 +45,7 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: "https://receipt-one.com/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
