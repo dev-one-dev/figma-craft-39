@@ -15,7 +15,7 @@ const BTN_Y = 800;
 const BTN_W = 272;
 const BTN_H = 56;
 const VB_W = 1440;
-const VB_H = 1656;
+const VB_H = 1200;
 
 export function Pricing({ region = "ca" }: { region?: "ca" | "us" }) {
   const src = region === "us" ? pricingUsSvg : pricingSvg;
