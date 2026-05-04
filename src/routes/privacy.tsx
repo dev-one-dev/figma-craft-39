@@ -13,6 +13,7 @@ import {
   type SummaryItem,
   type Region,
 } from "@/components/site/legal/shared";
+import { pageSEO, breadcrumbJsonLd } from "@/lib/seo";
 
 /* ----------------------------- Section catalog ---------------------------- */
 
@@ -120,23 +121,32 @@ const PRIVACY_SUMMARY: SummaryItem[] = [
 ];
 
 export const Route = createFileRoute("/privacy")({
-  head: () => ({
-    meta: [
-      { title: "ReceiptOne — Privacy Policy" },
-      {
-        name: "description",
-        content:
-          "ReceiptOne Privacy Policy covering data collection, use, retention, privacy rights, security, and contact details for users in Canada and the United States.",
-      },
-      { property: "og:title", content: "ReceiptOne — Privacy Policy" },
-      {
-        property: "og:description",
-        content:
-          "How ReceiptOne collects, uses, discloses, stores, and protects personal information across PIPEDA, Quebec Law 25, CCPA/CPRA, and other U.S. state privacy laws.",
-      },
-      { property: "og:type", content: "website" },
-    ],
-  }),
+  head: () => {
+    const seo = pageSEO({
+      path: "/privacy",
+      title: "Privacy Policy | ReceiptOne",
+      description:
+        "Learn how ReceiptOne collects, uses, protects, and manages personal information for users in the United States and Canada.",
+      ogTitle: "Privacy Policy | ReceiptOne",
+      ogDescription:
+        "How ReceiptOne collects, uses, discloses, stores, and protects personal information for users in the United States and Canada.",
+    });
+    return {
+      meta: seo.meta,
+      links: seo.links,
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", path: "/" },
+              { name: "Privacy Policy", path: "/privacy" },
+            ]),
+          ),
+        },
+      ],
+    };
+  },
   component: PrivacyPage,
 });
 

@@ -7,29 +7,49 @@ import { NotAll } from "@/components/site/NotAll";
 import { Advantages } from "@/components/site/Advantages";
 import { AppBanner } from "@/components/site/AppBanner";
 import { Pricing } from "@/components/site/Pricing";
-import { Faq } from "@/components/site/Faq";
+import { Faq, faqItems } from "@/components/site/Faq";
 import { Footer } from "@/components/site/Footer";
 import { SuggestFeatureWidget } from "@/components/site/SuggestFeatureWidget";
 import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
+import {
+  pageSEO,
+  HREFLANG_US_CA,
+  softwareApplicationJsonLd,
+  breadcrumbJsonLd,
+  faqJsonLd,
+} from "@/lib/seo";
 
 export const Route = createFileRoute("/ca")({
-  head: () => ({
-    meta: [
-      { title: "ReceiptOne Canada — Track expenses, store receipts, generate tax-ready reports" },
-      {
-        name: "description",
-        content:
-          "Built for freelancers, self-employed, and small businesses in Canada. Track expenses, store receipts and generate tax-ready reports — all in one place.",
-      },
-      { property: "og:title", content: "ReceiptOne Canada" },
-      {
-        property: "og:description",
-        content:
-          "Track expenses, store receipts and generate tax-ready reports. Built for Canadian freelancers and small businesses.",
-      },
-      { property: "og:type", content: "website" },
-    ],
-  }),
+  head: () => {
+    const seo = pageSEO({
+      path: "/ca",
+      title:
+        "ReceiptOne Canada | Receipt, Expense & Mileage Tracker for CRA Records",
+      description:
+        "Organize receipts, track expenses and mileage, and export tax-ready reports for Canadian freelancers, contractors, and small businesses.",
+      ogTitle: "ReceiptOne Canada | Receipt, Expense & Mileage Tracker",
+      ogDescription:
+        "Organize receipts, mileage, expenses, and accountant-ready reports for Canadian freelancers and small businesses.",
+      hreflang: HREFLANG_US_CA,
+    });
+    return {
+      meta: seo.meta,
+      links: seo.links,
+      scripts: [
+        { type: "application/ld+json", children: JSON.stringify(softwareApplicationJsonLd("ca")) },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", path: "/" },
+              { name: "Canada", path: "/ca" },
+            ]),
+          ),
+        },
+        { type: "application/ld+json", children: JSON.stringify(faqJsonLd(faqItems)) },
+      ],
+    };
+  },
   component: CanadaPage,
 });
 
