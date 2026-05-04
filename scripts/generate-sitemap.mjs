@@ -6,7 +6,7 @@
 import { readdirSync, statSync, writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 
-const ORIGIN = process.env.SITE_ORIGIN || "https://figma-craft-39.lovable.app";
+const ORIGIN = process.env.SITE_ORIGIN || "https://receipt-one.com";
 const ROUTES_DIR = "src/routes";
 const OUTPUT = "public/sitemap.xml";
 
