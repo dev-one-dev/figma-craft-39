@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
-import appBannerCaArt from "@/assets/figma/app-banner-ca-replacement.svg?url";
+import appBannerCaArt from "@/assets/figma/app-banner-ca.svg?url";
 import appBannerUsArt from "@/assets/figma/app-banner-us.svg?url";
 
 const APP_STORE_URL = "https://apps.apple.com/app/receiptone/id0000000000";
@@ -214,7 +214,7 @@ export function AppBanner({ region = "ca" }: { region?: "ca" | "us" }) {
   // The US Figma export already bakes in headline, copy, QR, store badges
   // and the phone mockups. Render the artwork on its own — no HTML overlay
   // needed, otherwise text and CTAs would duplicate.
-  if (region === "us") {
+  if (region === "us" || region === "ca") {
     return (
       <section
         id="apps"
