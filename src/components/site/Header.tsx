@@ -60,7 +60,9 @@ export function Header() {
   };
 
   const scrollOffset = () =>
-    typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches ? 88 : 104;
+    typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches
+      ? 88
+      : 104;
 
   const scrollTo = (id: string) => () => {
     setMobileNavOpen(false);
@@ -279,15 +281,7 @@ export function Header() {
 
 function MenuOpenIcon() {
   return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      aria-hidden
-    >
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
       <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" />
     </svg>
   );
@@ -295,15 +289,7 @@ function MenuOpenIcon() {
 
 function MenuCloseIcon() {
   return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      aria-hidden
-    >
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
       <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
     </svg>
   );

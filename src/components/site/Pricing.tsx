@@ -24,9 +24,19 @@ export function Pricing({ region = "ca" }: { region?: "ca" | "us" }) {
       ? "Pricing — Week, Month (Most Popular), Year"
       : "Pricing — Week CAD 4.99, Month CAD 9.99 (Most Popular), Year CAD 99.99 (Save 18%)";
   return (
-    <section id="pricing" className="mx-auto w-full max-w-[1440px] scroll-mt-28 px-3 sm:px-6">
-      <div className="relative w-full overflow-hidden" style={{ aspectRatio: `${VB_W} / ${VB_H}` }}>
-        <img src={src} alt={alt} className="absolute inset-x-0 top-0 block w-full" />
+    <section
+      id="pricing"
+      className="mx-auto w-full max-w-[1440px] scroll-mt-28 px-3 sm:px-6"
+    >
+      <div
+        className="relative w-full overflow-hidden"
+        style={{ aspectRatio: `${VB_W} / ${VB_H}` }}
+      >
+        <img
+          src={src}
+          alt={alt}
+          className="absolute inset-x-0 top-0 block w-full"
+        />
         {CARDS.map((c) => (
           <button
             key={c.label}

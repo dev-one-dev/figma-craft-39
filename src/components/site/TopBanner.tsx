@@ -14,11 +14,13 @@ export function TopBanner() {
       <div className="relative mx-auto flex w-full max-w-[960px] flex-col items-center gap-6 sm:gap-8">
         <div className="relative flex w-full flex-col items-center gap-3">
           <h1 className="text-center font-display text-[30px] font-semibold leading-[1.08] tracking-[-0.02em] text-black sm:text-[40px] md:text-[52px] lg:text-[56px] xl:text-[64px]">
-            Track expenses, store receipts, and generate tax-ready reports – all in one place
+            Track expenses, store receipts, and generate tax-ready reports –
+            all in one place
           </h1>
 
           <p className="max-w-full px-1 text-center font-display text-base leading-6 tracking-[-0.02em] text-[#9192a1] sm:text-lg sm:leading-7">
-            Built for freelancers, self-employed, and small businesses in the US &amp; Canada
+            Built for freelancers, self-employed, and small businesses in the
+            US &amp; Canada
           </p>
 
           <DashedLoop className="pointer-events-none absolute left-1/2 top-[180px] hidden -translate-x-[340px] md:block" />
@@ -55,7 +57,7 @@ export function TopBanner() {
           </video>
         </div>
 
-        <div className="group/users relative mx-auto flex w-full max-w-md cursor-pointer flex-col items-center gap-3 rounded-2xl px-3 py-2 transition-all duration-500 ease-out hover:bg-black/[0.03] hover:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.18)] sm:w-auto sm:max-w-none sm:flex-row sm:gap-[9px]">
+        <div className="group/users relative flex w-full max-w-md cursor-pointer flex-col items-center gap-3 rounded-2xl px-3 py-2 transition-all duration-500 ease-out hover:bg-black/[0.03] hover:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.18)] sm:max-w-none sm:flex-row sm:gap-[9px]">
           <div className="flex items-center pr-0 sm:pr-6">
             <Avatar src={avatar1} alt="User 1" delay={0} />
             <Avatar src={avatar2} alt="User 2" offset delay={60} />
@@ -121,10 +123,12 @@ function DashedLoop({ className }: { className?: string }) {
         fill="#9192A1"
         style={{
           transformOrigin: "50% 50%",
-          animation: "loopDraw 1.6s ease-out 0.3s both, loopFloat 4s ease-in-out 2s infinite",
+          animation:
+            "loopDraw 1.6s ease-out 0.3s both, loopFloat 4s ease-in-out 2s infinite",
           clipPath: "inset(0 100% 0 0)",
         }}
       />
     </svg>
   );
 }
+

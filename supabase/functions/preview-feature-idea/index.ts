@@ -3,7 +3,8 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
 };
 
 interface IdeaRow {
@@ -78,10 +79,10 @@ serve(async (req) => {
         );
       }
       if (aiRes.status === 402) {
-        return new Response(JSON.stringify({ error: "AI credits exhausted." }), {
-          status: 402,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+        return new Response(
+          JSON.stringify({ error: "AI credits exhausted." }),
+          { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
       }
       const t = await aiRes.text();
       console.error("AI gateway error", aiRes.status, t);
@@ -105,7 +106,9 @@ serve(async (req) => {
 
     let similar: IdeaRow[] = [];
     if (tokens.length > 0) {
-      const orFilter = tokens.map((t) => `title.ilike.%${t}%,description.ilike.%${t}%`).join(",");
+      const orFilter = tokens
+        .map((t) => `title.ilike.%${t}%,description.ilike.%${t}%`)
+        .join(",");
       const { data, error } = await supabase
         .from("feature_ideas")
         .select("id, title, description, votes_count, status")
@@ -116,10 +119,10 @@ serve(async (req) => {
       similar = (data as IdeaRow[]) ?? [];
     }
 
-    return new Response(JSON.stringify({ title, description, similar }), {
-      status: 200,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ title, description, similar }),
+      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
   } catch (e) {
     console.error("preview-feature-idea error", e);
     return new Response(
