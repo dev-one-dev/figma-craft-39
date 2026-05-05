@@ -197,6 +197,8 @@ export function Advantages() {
           src={advantagesSvg}
           alt="What is our advantages — Save 10+ hours, never miss mileage deductions, accountant-ready reports, documentation ready, mobile + web in sync"
           className="pointer-events-none block h-full w-full"
+          loading="lazy"
+          decoding="async"
         />
 
         {TILES.map((tile, i) => (

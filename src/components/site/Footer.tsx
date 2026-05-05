@@ -85,6 +85,8 @@ export function Footer({ region = "ca" }: FooterProps) {
         className={`relative z-[1] block h-auto w-full ${
           !reduced ? "animate-[footer-float_9s_ease-in-out_infinite]" : ""
         }`}
+        loading="lazy"
+        decoding="async"
       />
 
       <button
