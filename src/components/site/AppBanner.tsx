@@ -231,6 +231,8 @@ export function AppBanner({ region = "ca" }: { region?: "ca" | "us" }) {
             height={ART_H}
             loading="lazy"
             decoding="async"
+            loading="lazy"
+            decoding="async"
             aria-hidden
           />
           <div

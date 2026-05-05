@@ -194,6 +194,8 @@ function TileRow({ src, alt, tiles }: { src: string; alt: string; tiles: string[
         src={src}
         alt={alt}
         className="pointer-events-none col-span-3 block h-auto w-full"
+        loading="lazy"
+        decoding="async"
       />
       {/* Per-card hotspots overlayed on top of the SVG */}
       <div className="pointer-events-none absolute inset-0 grid grid-cols-3 gap-[2.5%] px-[1%]">

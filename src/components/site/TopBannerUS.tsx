@@ -51,6 +51,7 @@ export function TopBannerUS() {
             loop
             muted
             playsInline
+            preload="metadata"
             aria-label="Eagle mascot wearing a USA cap, reading a receipt"
           >
             <source src={eagleHeroVideoTransparent} type="video/webm" />

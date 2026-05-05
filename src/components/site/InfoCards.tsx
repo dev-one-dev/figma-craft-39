@@ -12,6 +12,8 @@ export function InfoCards() {
           src={infoCardsSvg}
           alt="Turn Receipt Chaos Into Tax Gold — benefits"
           className="block h-auto w-full"
+          loading="lazy"
+          decoding="async"
         />
       </div>
     </section>

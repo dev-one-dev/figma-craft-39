@@ -36,6 +36,8 @@ export function Pricing({ region = "ca" }: { region?: "ca" | "us" }) {
           src={src}
           alt={alt}
           className="absolute inset-x-0 top-0 block w-full"
+          loading="lazy"
+          decoding="async"
         />
         {CARDS.map((c) => (
           <button

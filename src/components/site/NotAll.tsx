@@ -86,6 +86,7 @@ export function NotAll() {
                 src={c.image}
                 alt={c.alt}
                 loading="lazy"
+                decoding="async"
                 className="block h-auto w-full max-w-[380px] select-none object-contain transition-transform duration-500 ease-out group-hover:scale-[1.06] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 draggable={false}
               />
