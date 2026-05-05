@@ -119,7 +119,7 @@ export function Footer({ region = "ca" }: FooterProps) {
       </button>
 
       <Link
-        to="/privacy"
+        to="/terms"
         aria-label="Terms of Use"
         className="absolute left-[42.5%] top-[88.5%] z-10 h-[5%] w-[8%] rounded-md transition-transform duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary motion-reduce:hover:scale-100"
       />
@@ -137,7 +137,7 @@ export function Footer({ region = "ca" }: FooterProps) {
       />
 
       <Link
-        to="/terms"
+        to="/privacy"
         aria-label="Privacy Policy"
         className="absolute left-[51%] top-[88.5%] z-10 h-[5%] w-[9%] rounded-md transition-transform duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary motion-reduce:hover:scale-100"
       />
