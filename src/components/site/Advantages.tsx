@@ -53,7 +53,7 @@ export function Advantages() {
           href="#apps"
           onClick={handleClaim}
           aria-label="Claim your free trial"
-          className="absolute rounded-[16px] transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6] focus-visible:ring-offset-4 focus-visible:ring-offset-white"
+          className="absolute rounded-[16px] bg-transparent transition-colors duration-200 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6] focus-visible:ring-offset-4 focus-visible:ring-offset-white"
           style={{
             left: `${(602.5 / 1440) * 100}%`,
             top: `${(920 / 1056) * 100}%`,
