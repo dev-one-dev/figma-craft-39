@@ -1,0 +1,318 @@
+# ReceiptOne — Landing Page
+
+Marketing site and community feature-voting platform for **ReceiptOne**, a tax-ready expense tracking and receipt management app for freelancers and small businesses in Canada and the USA.
+
+Built with TanStack Start (React 19), Tailwind CSS v4, and Supabase.
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Routes](#routes)
+- [Features](#features)
+- [Database](#database)
+- [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [Available Scripts](#available-scripts)
+- [Deployment](#deployment)
+- [Known Issues](#known-issues)
+
+---
+
+## Overview
+
+This repository is the public-facing landing site for ReceiptOne. It serves two regional storefronts:
+
+- `/ca` — Canada (beaver mascot, CAD pricing, CRA tax context)
+- `/us` — United States (eagle mascot, USD pricing, IRS tax context)
+
+The site includes:
+- Regional landing pages with hero video, feature highlights, pricing, and FAQ
+- A live **AI-powered feature suggestion widget** backed by Supabase and a Gemini Flash edge function
+- Anonymous community voting on feature ideas (no account required)
+- Legal pages (Privacy Policy, Terms of Use)
+- Login and signup pages (UI placeholder — auth not yet wired)
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | [TanStack Start](https://tanstack.com/start) 1.167 (React 19, SSR) |
+| Router | [TanStack Router](https://tanstack.com/router) — file-based routing |
+| Styling | [Tailwind CSS](https://tailwindcss.com) v4 + shadcn/ui (New York) |
+| Icons | [Lucide React](https://lucide.dev) |
+| Backend | [Supabase](https://supabase.com) — PostgreSQL + Edge Functions |
+| AI | Lovable AI Gateway → Google Gemini Flash (feature normalization) |
+| Toasts | [Sonner](https://sonner.emilkowal.ski) |
+| QR codes | [qrcode.react](https://github.com/zpao/qrcode.react) |
+| Build | [Vite](https://vitejs.dev) 7 via `@lovable.dev/vite-tanstack-config` |
+| Deploy | [Vercel](https://vercel.com) (Nitro preset) |
+| Language | TypeScript 5.8 (strict mode) |
+
+---
+
+## Project Structure
+
+```
+figma-craft-39/
+├── src/
+│   ├── routes/                     # TanStack Router file-based routes
+│   │   ├── __root.tsx              # Root document shell (html/head/body)
+│   │   ├── index.tsx               # Redirects / → /ca
+│   │   ├── ca.tsx                  # Canada landing page
+│   │   ├── us.tsx                  # USA landing page
+│   │   ├── login.tsx               # Login (UI placeholder)
+│   │   ├── signup.tsx              # Sign up (UI placeholder)
+│   │   ├── privacy.tsx             # Privacy Policy
+│   │   └── terms.tsx               # Terms of Use
+│   ├── components/
+│   │   ├── site/                   # Page section components
+│   │   │   ├── Header.tsx          # Fixed nav with region switcher
+│   │   │   ├── TopBanner.tsx       # CA hero section (beaver, video)
+│   │   │   ├── TopBannerUS.tsx     # US hero section (eagle, video)
+│   │   │   ├── Numbers.tsx         # Animated stats marquee
+│   │   │   ├── InfoCards.tsx       # Benefits section (CA)
+│   │   │   ├── NotAll.tsx          # Feature grid (CA)
+│   │   │   ├── NotAllUS.tsx        # Testimonial tiles (US, interactive)
+│   │   │   ├── Advantages.tsx      # Feature comparison (shared)
+│   │   │   ├── AppBanner.tsx       # App download CTA + QR code
+│   │   │   ├── Pricing.tsx         # Pricing table
+│   │   │   ├── Faq.tsx             # FAQ accordion
+│   │   │   ├── Footer.tsx          # Footer with region-aware links
+│   │   │   └── SuggestFeatureWidget.tsx  # AI feature suggestion modal
+│   │   └── ui/                     # shadcn/ui primitives (Radix-based)
+│   ├── hooks/
+│   │   ├── use-mobile.tsx          # Mobile breakpoint detection
+│   │   └── use-reveal-on-scroll.tsx # Staggered scroll-reveal animation
+│   ├── integrations/supabase/
+│   │   ├── client.ts               # Supabase client (lazy singleton)
+│   │   ├── client.server.ts        # Server-side Supabase client
+│   │   ├── types.ts                # Auto-generated DB types
+│   │   └── auth-middleware.ts      # Auth helpers (scaffolded)
+│   ├── lib/utils.ts                # cn() Tailwind class merger
+│   ├── assets/figma/               # SVG/WebP/MP4 Figma exports
+│   ├── styles.css                  # Tailwind + custom keyframes + design tokens
+│   ├── router.tsx                  # Router config + error boundary
+│   └── routeTree.gen.ts            # Auto-generated by TanStack Router
+├── supabase/
+│   ├── functions/
+│   │   └── preview-feature-idea/   # Deno edge function — AI normalization
+│   ├── migrations/                 # PostgreSQL schema migrations
+│   └── config.toml                 # Supabase local dev config
+├── vite.config.ts
+├── tsconfig.json
+├── components.json                 # shadcn/ui config
+└── wrangler.jsonc                  # Cloudflare Workers config (optional)
+```
+
+---
+
+## Routes
+
+| Route | Description |
+|---|---|
+| `/` | Server-side redirect to `/ca` |
+| `/ca` | Canada landing page |
+| `/us` | USA landing page |
+| `/login` | Login form (UI only — auth not wired) |
+| `/signup` | Sign up form (UI only — auth not wired) |
+| `/privacy` | Privacy Policy |
+| `/terms` | Terms of Use |
+
+---
+
+## Features
+
+### Regional Landing Pages (`/ca`, `/us`)
+
+Each page composes full-page sections:
+
+1. **Header** — Fixed pill nav with smooth-scroll anchors (Benefits, Apps, Pricing, FAQ), region switcher (CA ↔ US), mobile drawer, ARIA-accessible
+2. **Hero** (`TopBanner` / `TopBannerUS`) — Animated transparent WebM video with MP4 fallback, social proof avatars, dashed-loop SVG animation
+3. **Numbers** — Auto-scrolling marquee of key stats (4.8★ rating, 100K+ receipts, etc.)
+4. **Benefits** (`InfoCards` / inline on US) — Feature highlights
+5. **Feature Grid** (`NotAll` / `NotAllUS`) — Interactive cards with 3D tilt, spotlight glow, and gradient border effects on pointer move
+6. **Advantages** — Feature comparison with interactive hotspots overlaid on Figma artwork
+7. **App Download** (`AppBanner`) — Platform-detected QR code (App Store / Google Play) + download CTAs
+8. **Pricing** — Plan comparison with interactive hover effects; clicking a plan scrolls to download
+9. **FAQ** — Accordion with animated height collapse
+10. **Footer** — Aurora cursor-follow glow, back-to-top, legal links, auth CTAs
+11. **Suggest a Feature** (floating widget) — See below
+
+### AI Feature Suggestion Widget
+
+A floating action button (bottom-right, all pages) that powers community feature voting:
+
+**Flow:**
+1. User types a feature idea (min 3 characters)
+2. Widget calls the `preview-feature-idea` Supabase Edge Function
+3. Edge Function normalizes the idea via Gemini Flash (forced tool-call for structured `title`/`description` output)
+4. Widget shows the normalized preview + up to 3 similar existing ideas with vote counts
+5. User can vote on a similar idea OR submit as a new idea
+6. All votes are anonymous (device ID stored in `localStorage`, enforced unique in DB)
+
+**No account required.** Voting is rate-limited per device by a `UNIQUE (idea_id, device_id)` DB constraint.
+
+### Scroll Reveal Animations
+
+Custom `useRevealOnScroll` hook applies staggered entrance animations to page sections using `IntersectionObserver`. Respects `prefers-reduced-motion`.
+
+### Interactive Micro-Interactions
+
+- **Magnetic 3D tilt** — pointer-follow tilt via CSS `--rx`/`--ry` variables (NotAllUS, Advantages)
+- **Spotlight glow** — radial gradient follows cursor within each card
+- **Gradient border** — animated border using `mask-composite`
+- **Click ripple** — pulse animation on card tap
+- **Aurora footer** — cursor-following glow across the footer
+
+---
+
+## Database
+
+Two tables in Supabase (PostgreSQL), all publicly readable/writable with RLS:
+
+### `feature_ideas`
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | uuid PK | `gen_random_uuid()` |
+| `title` | text | 1–80 characters (CHECK constraint) |
+| `description` | text | 1–220 characters (CHECK constraint) |
+| `status` | enum | `under_review` \| `planned` \| `coming_soon` \| `published` |
+| `votes_count` | integer | Denormalized, auto-synced via trigger |
+| `device_id` | text | Anonymous device identifier |
+| `region` | text | `"ca"` or `"us"` (nullable) |
+| `created_at` | timestamptz | |
+| `updated_at` | timestamptz | Auto-updated via trigger |
+
+### `feature_votes`
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | uuid PK | |
+| `idea_id` | uuid FK | References `feature_ideas(id) ON DELETE CASCADE` |
+| `device_id` | text | |
+| `created_at` | timestamptz | |
+
+**Unique constraint:** `(idea_id, device_id)` — one vote per device per idea.
+
+**Triggers:**
+- `update_feature_ideas_updated_at` — sets `updated_at = now()` on every update
+- `feature_votes_count_trigger` — increments/decrements `votes_count` on insert/delete
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 20+ or [Bun](https://bun.sh)
+- A [Supabase](https://supabase.com) project (for the feature widget)
+
+### Install
+
+```bash
+# with npm
+npm install
+
+# with bun
+bun install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the project root (never commit `.env`):
+
+```env
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+```
+
+The Supabase Edge Function additionally requires:
+```
+LOVABLE_API_KEY=your-lovable-api-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+```
+These are set in the Supabase dashboard under **Project Settings → Edge Functions → Secrets**.
+
+### Run locally
+
+```bash
+npm run dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). The root redirects to `/ca`.
+
+### Database setup
+
+Apply the migration to your Supabase project:
+
+```bash
+supabase db push
+# or apply supabase/migrations/*.sql manually via the Supabase SQL editor
+```
+
+### Deploy the Edge Function
+
+```bash
+supabase functions deploy preview-feature-idea
+```
+
+---
+
+## Available Scripts
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build (Vercel/Nitro output) |
+| `npm run build:dev` | Development build |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint |
+| `npm run format` | Run Prettier |
+
+---
+
+## Deployment
+
+The project deploys to **Vercel** using the Nitro preset configured in `vite.config.ts`:
+
+```ts
+plugins: [nitro({ preset: 'vercel' })]
+```
+
+A `wrangler.jsonc` is also present for optional **Cloudflare Workers** deployment — set `cloudflare: true` in `vite.config.ts` to enable it.
+
+### Vercel
+
+1. Connect the GitHub repo in the Vercel dashboard
+2. Set environment variables (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`)
+3. Deploy — Vercel auto-detects the Nitro/Vite output
+
+---
+
+## Known Issues
+
+The following issues are tracked and open for contribution:
+
+| # | Issue | Severity |
+|---|---|---|
+| [#2](https://github.com/dev-one-dev/figma-craft-39/issues/2) | `.env` committed with live credentials | High |
+| [#3](https://github.com/dev-one-dev/figma-craft-39/issues/3) | `feature_votes` DELETE policy is open to everyone | High |
+| [#4](https://github.com/dev-one-dev/figma-craft-39/issues/4) | No rate limiting on feature idea submissions | Medium |
+| [#5](https://github.com/dev-one-dev/figma-craft-39/issues/5) | `Toaster` never mounted — error toasts silently swallowed | Medium |
+| [#6](https://github.com/dev-one-dev/figma-craft-39/issues/6) | Footer `/privacy` and `/terms` links are swapped | Medium |
+| [#7](https://github.com/dev-one-dev/figma-craft-39/issues/7) | Duplicate `id="benefits"` on both pages | Low |
+| [#8](https://github.com/dev-one-dev/figma-craft-39/issues/8) | Auto-vote not rolled back if vote insert fails | Low |
+| [#9](https://github.com/dev-one-dev/figma-craft-39/issues/9) | App Store URL is a placeholder | Medium |
+| [#10](https://github.com/dev-one-dev/figma-craft-39/issues/10) | Login/signup pages not wired to Supabase Auth | Medium |
+| [#16](https://github.com/dev-one-dev/figma-craft-39/issues/16) | No favicon defined | Low |
+| [#17](https://github.com/dev-one-dev/figma-craft-39/issues/17) | Site performance — 40+ MB of unoptimised assets, no lazy loading | High |
+| [#18](https://github.com/dev-one-dev/figma-craft-39/issues/18) | Double scrollbar on `/ca` and `/us` | Medium |
