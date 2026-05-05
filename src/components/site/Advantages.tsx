@@ -35,7 +35,7 @@ export function Advantages() {
   };
 
   return (
-    <section id="benefits" className="w-full scroll-mt-28">
+    <section className="w-full">
       <div className="relative w-full" style={{ aspectRatio: "1440 / 1056" }}>
         <img
           src={advantagesSvg}
