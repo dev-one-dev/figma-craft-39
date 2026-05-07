@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ChevronDown, ChevronsDownUp, ChevronsUpDown, ListTree, X } from "lucide-react";
-import { SubSection, BulletList, DataTable } from "@/components/site/PolicyHelpers";
 import logoMark from "@/assets/figma/logo-mark.svg";
 import logoWordmark from "@/assets/figma/logo-wordmark.svg";
 import {
