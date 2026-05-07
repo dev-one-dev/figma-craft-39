@@ -157,16 +157,6 @@ html { scroll-behavior: smooth; }
   }
 }
 
-@keyframes loopFloat {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-3px) rotate(-1.5deg);
-  }
-}
-
 /* ============================================================
  * Global modern interactions for buttons & links on /ca and /us
  * Scoped to [data-interactive-page] containers so we don't
