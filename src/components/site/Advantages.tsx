@@ -218,7 +218,7 @@ export function Advantages() {
           onClick={handleClaim}
           onPointerMove={handleClaimMove}
           aria-label="Claim your free trial"
-          className={`group absolute overflow-hidden rounded-[16px] transition-all duration-500 ease-out hover:scale-[1.04] hover:shadow-[0_20px_50px_-12px_rgba(59,130,246,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6] focus-visible:ring-offset-4 focus-visible:ring-offset-white motion-reduce:transition-none motion-reduce:hover:scale-100 ${
+          className={`group absolute overflow-hidden rounded-[16px] transition-all duration-500 ease-out hover:-translate-y-0.5 hover:scale-[1.04] hover:shadow-[0_20px_50px_-12px_rgba(59,130,246,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6] focus-visible:ring-offset-4 focus-visible:ring-offset-white motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100 ${
             !prefersReducedMotion ? "animate-[claim-glow_2.8s_ease-in-out_infinite]" : ""
           } ${claimActive ? "scale-[0.98]" : ""}`}
           style={{
