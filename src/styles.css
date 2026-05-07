@@ -369,72 +369,7 @@ html { scroll-behavior: smooth; }
   }
 }
 
-.numbers-pill {
-  --marquee-gap: 3rem;
-}
-
-.numbers-track {
-  display: flex;
-  width: max-content;
-  align-items: center;
-  will-change: transform;
-}
-
-.numbers-group {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  gap: var(--marquee-gap);
-}
-
-.numbers-spacer {
-  width: clamp(1rem, 2vw, 1.75rem);
-  flex-shrink: 0;
-}
-
-@media (min-width: 640px) {
-  .numbers-pill {
-    --marquee-gap: 4rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .numbers-pill {
-    --marquee-gap: 5rem;
-  }
-}
-
-/* NotAll tiles — coarse-pointer floating + active click pulse */
-@keyframes notall-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-@keyframes notall-pulse {
-  0% { opacity: 0; transform: scale(0.96); }
-  40% { opacity: 1; }
-  100% { opacity: 0; transform: scale(1.04); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [class*="animate-[notall-float"],
-  [class*="animate-[notall-pulse"] {
-    animation: none !important;
-  }
-}
-
 /* Claim button — modern animated CTA */
-@keyframes claim-glow {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.45),
-                0 8px 24px -8px rgba(59, 130, 246, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0),
-                0 12px 32px -8px rgba(168, 85, 247, 0.55);
-  }
-}
-
 @keyframes claim-shimmer {
   0% { transform: translateX(-100%); opacity: 0; }
   20% { opacity: 1; }
@@ -447,27 +382,8 @@ html { scroll-behavior: smooth; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [class*="animate-[claim-glow"],
   [class*="animate-[claim-shimmer"],
   [class*="animate-[claim-ripple"] {
-    animation: none !important;
-  }
-}
-
-/* Footer — animated background line + gentle float */
-@keyframes footer-line {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-
-@keyframes footer-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [class*="animate-[footer-line"],
-  [class*="animate-[footer-float"] {
     animation: none !important;
   }
 }
