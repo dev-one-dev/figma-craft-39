@@ -174,10 +174,10 @@ export function TopBanner() {
 
         <div className="group/users relative mx-auto flex w-fit cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl px-3 py-2 transition-[background-color,box-shadow,transform] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-black/[0.03] hover:shadow-[0_10px_30px_-14px_rgba(0,0,0,0.18)] sm:flex-row sm:items-center sm:gap-[14px]">
           <div className="flex items-center justify-center">
-            <Avatar src={avatar1} alt="User 1" delay={0} />
-            <Avatar src={avatar2} alt="User 2" offset delay={60} />
-            <Avatar src={avatar3} alt="User 3" offset delay={120} />
-            <Avatar src={avatar4} alt="User 4" offset delay={180} />
+            <Avatar src={avatar1} alt="User 1" />
+            <Avatar src={avatar2} alt="User 2" offset />
+            <Avatar src={avatar3} alt="User 3" offset />
+            <Avatar src={avatar4} alt="User 4" offset />
           </div>
           <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
             <span className="font-display text-base font-semibold leading-5 text-black transition-transform duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/users:-translate-y-px">
