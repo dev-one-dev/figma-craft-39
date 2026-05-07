@@ -1,15 +1,10 @@
 import testimonialRowUs from "@/assets/figma/testimonial-row-us.webp";
 import testimonialRowUs2 from "@/assets/figma/testimonial-row-us-2.webp";
-import { useReplayOnVisible } from "@/hooks/use-replay-on-visible";
 
 function TileRow({ src, alt }: { src: string; alt: string }) {
-  const [rowRef, rowKey] = useReplayOnVisible<HTMLDivElement>(0.25);
-
   return (
     <div
-      ref={rowRef}
-      key={rowKey}
-      className="notall-row is-visible relative"
+      className="relative"
       role="group"
       aria-label={alt}
     >
@@ -32,19 +27,14 @@ function TileRow({ src, alt }: { src: string; alt: string }) {
 }
 
 export function NotAllUS() {
-  const [headerRef, headerKey] = useReplayOnVisible<HTMLDivElement>(0.4);
   return (
     <section className="mx-auto w-full max-w-[960px] px-4 pt-4 pb-20 sm:px-6 sm:pt-8 sm:pb-[132px]">
-      <div
-        ref={headerRef}
-        key={headerKey}
-        className="notall-divider is-visible mb-10 flex items-center gap-4 sm:mb-[78px]"
-      >
-        <div className="notall-line h-px flex-1 bg-black/15" />
-        <h2 className="notall-title font-display text-[15px] font-medium tracking-wide text-[#7e8890]">
+      <div className="mb-10 flex items-center gap-4 sm:mb-[78px]">
+        <div className="h-px flex-1 bg-black/15" />
+        <h2 className="font-display text-[15px] font-medium tracking-wide text-[#7e8890]">
           And this is not all
         </h2>
-        <div className="notall-line right h-px flex-1 bg-black/15" />
+        <div className="h-px flex-1 bg-black/15" />
       </div>
 
       <TileRow

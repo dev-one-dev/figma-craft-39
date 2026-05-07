@@ -10,7 +10,6 @@ import { Pricing } from "@/components/site/Pricing";
 import { Faq, faqItems } from "@/components/site/Faq";
 import { Footer } from "@/components/site/Footer";
 import { SuggestFeatureWidget } from "@/components/site/SuggestFeatureWidget";
-import { useRevealOnScroll } from "@/hooks/use-reveal-on-scroll";
 import {
   pageSEO,
   HREFLANG_US_CA,
@@ -54,17 +53,15 @@ export const Route = createFileRoute("/us")({
 });
 
 function USAPage() {
-  useRevealOnScroll();
   return (
     <main
       data-interactive-page
-      data-reveal-root
       className="min-h-screen overflow-x-clip bg-[#f5f4f0] font-sans text-black antialiased"
     >
-      <div data-reveal-skip><Header /></div>
-      <div data-reveal><TopBannerUS /></div>
-      <div data-reveal><Numbers /></div>
-      <section id="benefits" data-reveal className="w-full">
+      <Header />
+      <TopBannerUS />
+      <Numbers />
+      <section id="benefits" className="w-full">
         <div className="mx-auto w-full max-w-[1440px]">
           <img
             src={infoCardsUsImg}
@@ -77,12 +74,12 @@ function USAPage() {
           />
         </div>
       </section>
-      <div data-reveal><NotAllUS /></div>
-      <div data-reveal><Advantages /></div>
-      <div data-reveal><AppBanner region="us" /></div>
-      <div data-reveal><Pricing region="us" /></div>
-      <div data-reveal><Faq /></div>
-      <div data-reveal><Footer region="us" /></div>
+      <NotAllUS />
+      <Advantages />
+      <AppBanner region="us" />
+      <Pricing region="us" />
+      <Faq />
+      <Footer region="us" />
       <SuggestFeatureWidget region="us" />
     </main>
   );
