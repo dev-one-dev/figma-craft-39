@@ -1,9 +1,6 @@
 import notAllCa from "@/assets/figma/not-all-ca.webp";
-import { useReplayOnVisible } from "@/hooks/use-replay-on-visible";
 
 export function NotAll() {
-  const [rowRef, rowKey] = useReplayOnVisible<HTMLDivElement>(0.2);
-
   const SVG_W = 1440;
   const SVG_H = 1325;
   const cardCols: Array<[number, number]> = [
@@ -15,7 +12,7 @@ export function NotAll() {
 
   return (
     <section className="mx-auto w-full max-w-[1440px] px-3 pt-0 pb-20 sm:px-6 sm:pt-2 sm:pb-[132px]">
-      <div ref={rowRef} key={rowKey} className="notall-row is-visible relative">
+      <div className="relative">
         <img
           src={notAllCa}
           alt="And this is not all — six ReceiptOne benefit cards for Canadian users"

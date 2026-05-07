@@ -3,9 +3,9 @@ import pricingUsSvg from "@/assets/figma/pricing-us.webp";
 
 // Card boxes from the Figma SVG (viewBox 1440x1632, displayed crop 1440x1110)
 const CARDS = [
-  { label: "Week plan", x: 240, btnX: 256, accent: "rgba(0,0,0,0.18)" },
-  { label: "Month plan", x: 568, btnX: 584, accent: "rgba(249,115,22,0.35)" },
-  { label: "Year plan", x: 896, btnX: 912, accent: "rgba(34,197,94,0.35)" },
+  { label: "Week plan", x: 240, btnX: 256 },
+  { label: "Month plan", x: 568, btnX: 584 },
+  { label: "Year plan", x: 896, btnX: 912 },
 ] as const;
 
 const CARD_Y = 624;
@@ -46,19 +46,12 @@ export function Pricing({ region = "ca" }: { region?: "ca" | "us" }) {
             key={c.label}
             type="button"
             aria-label={c.label}
-            className="group absolute cursor-pointer rounded-[32px] bg-transparent transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-[1.03]"
+            className="absolute cursor-pointer rounded-[32px] bg-transparent"
             style={{
               left: `${(c.x / VB_W) * 100}%`,
               top: `${(CARD_Y / VB_H) * 100}%`,
               width: `${(CARD_W / VB_W) * 100}%`,
               height: `${(CARD_H / VB_H) * 100}%`,
-              boxShadow: "0 0 0 0 rgba(0,0,0,0)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = `0 30px 60px -20px ${c.accent}, 0 0 0 1px ${c.accent}`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = "0 0 0 0 rgba(0,0,0,0)";
             }}
           />
         ))}
@@ -73,7 +66,7 @@ export function Pricing({ region = "ca" }: { region?: "ca" | "us" }) {
                 .getElementById("apps")
                 ?.scrollIntoView({ behavior: "smooth", block: "start" });
             }}
-            className="absolute z-10 rounded-[16px] transition-transform duration-200 hover:scale-[1.04]"
+            className="absolute z-10 rounded-[16px]"
             style={{
               left: `${(c.btnX / VB_W) * 100}%`,
               top: `${(BTN_Y / VB_H) * 100}%`,
