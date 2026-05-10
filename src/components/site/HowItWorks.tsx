@@ -1,33 +1,59 @@
-import { ScanLine, Sparkles, FileDown } from "lucide-react";
+import { ScanLine, Layers, FileDown } from "lucide-react";
 
 type Region = "ca" | "us";
 
-const steps = [
+const CA_STEPS = [
   {
     icon: ScanLine,
-    title: "Scan or upload receipts",
+    title: "Snap your receipts",
     description:
-      "Snap a photo, forward an email, or bulk-upload PDFs. Paper, digital, and email receipts all land in one place.",
+      "Photograph any receipt, forward an email receipt, or upload a PDF. Paper, digital, and email receipts all captured automatically.",
   },
   {
-    icon: Sparkles,
-    title: "We extract and categorize",
+    icon: Layers,
+    title: "Organized automatically",
     description:
-      "ReceiptOne reads merchant, date, total, and tax automatically, then sorts each expense into the right category.",
+      "ReceiptOne reads merchant, amount, date, and tax — then categorizes every expense. GST, HST, and PST tracked per province. Zero manual entry.",
+  },
+  {
+    icon: FileDown,
+    title: "Export CRA-ready reports",
+    description:
+      "Download audit-ready expense reports in one tap. Hand them to your accountant or file your own taxes — stress-free tax season, every year.",
+  },
+];
+
+const US_STEPS = [
+  {
+    icon: ScanLine,
+    title: "Snap your receipts",
+    description:
+      "Photograph any receipt, forward an email receipt, or upload a PDF. Paper, digital, and email receipts all captured automatically.",
+  },
+  {
+    icon: Layers,
+    title: "Organized automatically",
+    description:
+      "ReceiptOne reads merchant, amount, date, and sales tax — then categorizes every expense into Schedule C-friendly categories. Zero manual entry.",
   },
   {
     icon: FileDown,
     title: "Export tax-ready reports",
     description:
-      "Generate accountant-ready PDF and CSV reports for your records, your bookkeeper, or tax time — anytime.",
+      "Download audit-ready expense reports in one tap. Hand them to your accountant or file your own taxes — stress-free tax season, every year.",
   },
 ];
 
 export function HowItWorks({ region = "ca" }: { region?: Region }) {
-  const taxNote =
+  const steps = region === "us" ? US_STEPS : CA_STEPS;
+  const heading =
     region === "us"
-      ? "Built around US recordkeeping needs — sales tax, 1099 contractors, and Schedule C-friendly categories."
-      : "Built around Canadian recordkeeping needs — GST/HST tracking and CRA-friendly categories.";
+      ? "From receipt chaos to tax-ready in three steps"
+      : "From receipt chaos to CRA-ready in three steps";
+  const sub =
+    region === "us"
+      ? "No accountant on retainer required. ReceiptOne does the heavy lifting so you can focus on your work."
+      : "No accountant on retainer required. ReceiptOne handles GST/HST tracking and CRA reporting so you can focus on your work.";
 
   return (
     <section
@@ -36,14 +62,14 @@ export function HowItWorks({ region = "ca" }: { region?: Region }) {
     >
       <div className="mx-auto w-full max-w-[1200px]">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="font-display text-sm font-semibold uppercase tracking-widest text-black/50">
+          <p className="font-sans text-xs font-semibold uppercase tracking-widest text-black/35">
             How it works
           </p>
-          <h2 className="mt-3 font-display text-3xl font-semibold leading-tight tracking-tight text-black sm:text-4xl lg:text-5xl">
-            From paper pile to tax-ready in three steps
+          <h2 className="mt-3 font-display text-3xl font-semibold leading-tight tracking-tight text-black sm:text-4xl lg:text-[2.75rem]">
+            {heading}
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-black/65 sm:text-lg">
-            {taxNote}
+          <p className="mt-4 text-base leading-relaxed text-black/55 sm:text-lg">
+            {sub}
           </p>
         </div>
 
@@ -53,7 +79,7 @@ export function HowItWorks({ region = "ca" }: { region?: Region }) {
             return (
               <li
                 key={step.title}
-                className="group relative flex flex-col rounded-3xl border border-black/[0.08] bg-white/70 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-black/15 hover:shadow-[0_20px_40px_-20px_rgba(0,0,0,0.18)] sm:p-8"
+                className="group relative flex flex-col rounded-3xl border border-black/[0.07] bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-black/15 hover:shadow-[0_20px_40px_-20px_rgba(0,0,0,0.18)] sm:p-8"
               >
                 <div className="flex items-center justify-between">
                   <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-black text-white">
@@ -69,7 +95,7 @@ export function HowItWorks({ region = "ca" }: { region?: Region }) {
                 <h3 className="mt-6 font-display text-xl font-semibold leading-snug text-black sm:text-2xl">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-black/65 sm:text-base">
+                <p className="mt-3 text-[15px] leading-relaxed text-black/60 sm:text-base">
                   {step.description}
                 </p>
               </li>
