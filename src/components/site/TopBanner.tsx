@@ -43,23 +43,25 @@ export function TopBanner() {
 
         {/* Primary CTA */}
         <div className="flex flex-col items-center gap-3">
-          <div className="flex items-end gap-2">
 
-            {/* Arrow + trial label — desktop only, sits to the left of the button */}
-            <div className="hidden flex-col items-end gap-0.5 md:flex">
-              <span className="font-script text-[18px] leading-tight text-[#9192a1]">
+          {/* Row: [text] [arrow] [button] — arrow+text hidden on mobile */}
+          <div className="flex flex-col items-center gap-3 md:flex-row md:items-end md:gap-2">
+
+            {/* Text + arrow */}
+            <div className="hidden items-end gap-1 md:flex">
+              <span className="mb-1 font-script text-[18px] leading-snug text-[#9192a1]">
                 7 days free trial available
               </span>
               <DashedLoopArrow className="w-[130px]" />
             </div>
 
+            {/* Button */}
             <a
               href="#apps"
               onClick={scrollToApps}
-              className="inline-flex items-center gap-2 rounded-full bg-black px-8 py-4 font-display text-base font-semibold text-white shadow-[0_8px_24px_rgba(0,0,0,0.18)] transition-all hover:scale-[1.02] hover:opacity-90"
+              className="inline-flex items-center justify-center rounded-full bg-black px-8 py-4 font-display text-base font-semibold text-white shadow-[0_8px_24px_rgba(0,0,0,0.18)] transition-all hover:scale-[1.02] hover:opacity-90"
             >
-              Start your free 7-day trial
-              <ArrowRightIcon />
+              Claim your free trial
             </a>
           </div>
 
@@ -138,14 +140,6 @@ const TRUST_BADGES = [
   { text: "CRA compliant", Icon: ShieldCheckIcon },
   { text: "Secure cloud backup", Icon: CloudIcon },
 ] as const;
-
-function ArrowRightIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M5 12h14M12 5l7 7-7 7" />
-    </svg>
-  );
-}
 
 function ShieldCheckIcon() {
   return (
