@@ -113,13 +113,24 @@ export function Header() {
               </button>
             </li>
             <li>
-              <button
-                type="button"
-                onClick={scrollTo("apps")}
-                className="rounded-md px-0.5 py-1 transition-opacity hover:opacity-70"
-              >
-                Apps
-              </button>
+              {isUS ? (
+                <button
+                  type="button"
+                  onClick={scrollTo("apps")}
+                  className="rounded-md px-0.5 py-1 transition-opacity hover:opacity-70"
+                >
+                  Apps
+                </button>
+              ) : (
+                <a
+                  href={/iPhone|iPad|iPod/i.test(typeof navigator !== "undefined" ? navigator.userAgent : "") ? "https://apps.apple.com/app/receiptone/id0000000000" : "https://play.google.com/store/apps/details?id=com.receiptone.app"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-md px-0.5 py-1 transition-opacity hover:opacity-70"
+                >
+                  Download
+                </a>
+              )}
             </li>
             <li>
               <button
@@ -246,9 +257,21 @@ export function Header() {
               <button type="button" className={mobileNavBtnClass} onClick={scrollTo("benefits")}>
                 Benefits
               </button>
-              <button type="button" className={mobileNavBtnClass} onClick={scrollTo("apps")}>
-                Apps
-              </button>
+              {isUS ? (
+                <button type="button" className={mobileNavBtnClass} onClick={scrollTo("apps")}>
+                  Apps
+                </button>
+              ) : (
+                <a
+                  href={/iPhone|iPad|iPod/i.test(typeof navigator !== "undefined" ? navigator.userAgent : "") ? "https://apps.apple.com/app/receiptone/id0000000000" : "https://play.google.com/store/apps/details?id=com.receiptone.app"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={mobileNavBtnClass}
+                  onClick={() => setMobileNavOpen(false)}
+                >
+                  Download
+                </a>
+              )}
               <button type="button" className={mobileNavBtnClass} onClick={scrollTo("pricing")}>
                 Pricing
               </button>
