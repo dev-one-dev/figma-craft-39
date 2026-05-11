@@ -139,14 +139,6 @@ export function Header() {
                 FAQ
               </button>
             </li>
-            <li>
-              <Link
-                to="/articles"
-                className="rounded-md px-0.5 py-1 transition-opacity hover:opacity-70"
-              >
-                Articles
-              </Link>
-            </li>
           </ul>
 
           <div className="flex shrink-0 flex-nowrap items-center justify-end gap-2">
@@ -263,13 +255,6 @@ export function Header() {
               <button type="button" className={mobileNavBtnClass} onClick={scrollTo("faq")}>
                 FAQ
               </button>
-              <Link
-                to="/articles"
-                onClick={() => setMobileNavOpen(false)}
-                className={mobileNavBtnClass}
-              >
-                Articles
-              </Link>
             </div>
             <div className="mt-3 flex flex-col gap-2">
               <Link

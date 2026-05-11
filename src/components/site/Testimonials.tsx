@@ -1,6 +1,7 @@
 import avatar1 from "@/assets/figma/avatar-1.webp";
 import avatar2 from "@/assets/figma/avatar-2.webp";
 import avatar3 from "@/assets/figma/avatar-3.webp";
+import avatarDavid from "@/assets/figma/crypto.png";
 
 const TESTIMONIALS = [
   {
@@ -17,7 +18,7 @@ const TESTIMONIALS = [
     name: "David Okonkwo",
     role: "Independent IT Contractor",
     location: "Toronto, ON",
-    avatar: avatar1,
+    avatar: avatarDavid,
   },
   {
     quote:
