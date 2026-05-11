@@ -42,24 +42,36 @@ export function TopBanner() {
         </p>
 
         {/* Primary CTA */}
-        <div className="flex flex-col items-start gap-2">
+        <div className="flex flex-col items-center gap-3">
 
-          {/* Text + arrow — desktop only */}
-          <div className="hidden items-end gap-1 md:flex">
-            <span className="mb-1 font-script text-[18px] leading-snug text-[#9192a1]">
+          {/* Desktop: single row [text] [arrow] [button] */}
+          <div className="hidden items-center gap-3 md:flex">
+            <span className="whitespace-nowrap font-script text-[18px] leading-none text-[#9192a1]">
               7 days free trial available
             </span>
-            <DashedLoopArrow className="w-[130px]" />
+            <DashedLoopArrow className="w-[120px] shrink-0" />
+            <a
+              href="#apps"
+              onClick={scrollToApps}
+              className="inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-black px-8 py-4 font-display text-base font-semibold text-white shadow-[0_8px_24px_rgba(0,0,0,0.18)] transition-all hover:scale-[1.02] hover:opacity-90"
+            >
+              Claim your free trial
+            </a>
           </div>
 
-          {/* Button */}
+          {/* Mobile: button only */}
           <a
             href="#apps"
             onClick={scrollToApps}
-            className="inline-flex items-center justify-center rounded-full bg-black px-8 py-4 font-display text-base font-semibold text-white shadow-[0_8px_24px_rgba(0,0,0,0.18)] transition-all hover:scale-[1.02] hover:opacity-90"
+            className="inline-flex items-center justify-center rounded-full bg-black px-8 py-4 font-display text-base font-semibold text-white shadow-[0_8px_24px_rgba(0,0,0,0.18)] transition-all hover:scale-[1.02] hover:opacity-90 md:hidden"
           >
             Claim your free trial
           </a>
+
+          {/* Mobile trial label */}
+          <p className="font-script text-[17px] text-[#9192a1] md:hidden">
+            7 days free trial available
+          </p>
 
           <p className="font-sans text-sm text-black/40">
             No credit card required · Cancel anytime
