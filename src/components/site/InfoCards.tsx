@@ -44,15 +44,15 @@ const FEATURES = [
 
 export function InfoCards() {
   return (
-    <section id="benefits" className="w-full bg-[#0d0d14] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <section id="benefits" className="w-full px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
       <div className="mx-auto w-full max-w-[1200px]">
 
         {/* Header */}
         <div className="mb-14 text-center sm:mb-16">
-          <p className="font-sans text-xs font-semibold uppercase tracking-widest text-white/35">
+          <p className="font-sans text-xs font-semibold uppercase tracking-widest text-black/35">
             Features
           </p>
-          <h2 className="mt-3 font-display text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-3 font-display text-3xl font-semibold leading-tight tracking-tight text-black sm:text-4xl lg:text-[2.75rem]">
             Turn receipts chaos into tax gold
           </h2>
 
@@ -75,10 +75,10 @@ export function InfoCards() {
                   <p className="font-sans text-xs font-semibold uppercase tracking-widest text-[#f97316]">
                     {f.label}
                   </p>
-                  <h3 className="mt-3 font-display text-2xl font-semibold leading-snug text-white sm:text-3xl">
+                  <h3 className="mt-3 font-display text-2xl font-semibold leading-snug text-black sm:text-3xl">
                     {f.title}
                   </h3>
-                  <p className="mt-4 text-base leading-relaxed text-white/55">
+                  <p className="mt-4 text-base leading-relaxed text-black/55">
                     {f.desc}
                   </p>
                 </div>
