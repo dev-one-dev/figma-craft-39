@@ -1,6 +1,6 @@
 function scrollToApps(e: React.MouseEvent) {
   e.preventDefault();
-  document.getElementById("apps")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 export function Advantages() {
@@ -20,7 +20,7 @@ export function Advantages() {
             Stop leaving money on the table. ReceiptOne identifies every deductible cent and categorizes it according to CRA rules, so you claim the biggest refund possible.
           </p>
           <a
-            href="#apps"
+            href="#pricing"
             onClick={scrollToApps}
             className="mt-6 inline-flex items-center justify-center rounded-full bg-black px-6 py-3 font-display text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,0,0,0.15)] transition-all hover:scale-[1.02] hover:opacity-90"
           >
