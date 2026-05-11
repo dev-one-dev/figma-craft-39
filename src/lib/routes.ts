@@ -19,6 +19,7 @@ export const ROUTES = {
   signup: "/signup",
   terms: "/terms",
   privacy: "/privacy",
+  articles: "/articles",
 } as const satisfies Record<string, AppRoute>;
 
 export type RouteKey = keyof typeof ROUTES;
