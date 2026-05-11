@@ -12,7 +12,7 @@ export function Numbers() {
   const [paused, setPaused] = useState(false);
 
   return (
-    <section className="w-full px-4 py-10 sm:px-6 md:px-8" aria-label="Key product statistics">
+    <section className="w-full px-4 py-6 sm:px-6 md:px-8" aria-label="Key product statistics">
       <div className="mx-auto w-full max-w-[760px]">
         <div
           className="relative overflow-hidden rounded-[32px] bg-card py-4 sm:rounded-[40px] sm:py-5"

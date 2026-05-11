@@ -51,7 +51,7 @@ export function Faq({ items = faqItems }: { items?: QA[] } = {}) {
   const [open, setOpen] = useState<number | null>(1);
 
   return (
-    <section id="faq" className="mx-auto w-full max-w-[760px] scroll-mt-28 px-4 pt-4 pb-16 sm:px-6 md:pt-8 md:pb-20">
+    <section id="faq" className="mx-auto w-full max-w-[760px] scroll-mt-28 px-4 pt-4 pb-10 sm:px-6 md:pt-6 md:pb-14">
       {/* Pill */}
       <div className="flex justify-center">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-black px-4 py-2 font-display text-[12px] font-semibold text-white">
