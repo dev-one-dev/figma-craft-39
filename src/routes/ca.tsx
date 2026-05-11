@@ -5,6 +5,7 @@ import { Numbers } from "@/components/site/Numbers";
 import { HowItWorks } from "@/components/site/HowItWorks";
 import { InfoCards } from "@/components/site/InfoCards";
 import { NotAll } from "@/components/site/NotAll";
+import { Testimonials } from "@/components/site/Testimonials";
 import { Trust } from "@/components/site/Trust";
 import { Advantages } from "@/components/site/Advantages";
 import { AppBanner } from "@/components/site/AppBanner";
@@ -65,7 +66,8 @@ function CanadaPage() {
       <Numbers />
       <HowItWorks region="ca" />
       <InfoCards />
-      <NotAll />
+      <NotAll region="ca" />
+      <Testimonials />
       <Trust region="ca" />
       <Advantages />
       <AppBanner />

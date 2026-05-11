@@ -7,43 +7,43 @@ export type QA = { q: string; a: string };
 export const faqItems: QA[] = [
   {
     q: "How does receipt scanning work?",
-    a: "Snap a photo or upload a file — our AI extracts the merchant, date, total and tax amounts automatically and files the receipt for you.",
+    a: "Open the app, point your camera at any receipt, and tap. ReceiptOne reads the merchant name, date, total, and tax amounts automatically — no typing required. Paper receipts, email receipts, and PDF invoices all work.",
   },
   {
     q: "Does ReceiptOne calculate my tax refund?",
-    a: "No. ReceiptOne does not calculate or guarantee tax refunds. We display taxes found on your receipts to help with reporting.",
+    a: "No — and we're upfront about that. ReceiptOne captures the GST/HST and PST on your receipts so you have accurate records for your CRA return. Your actual refund depends on your full tax situation, which your accountant or tax software calculates.",
   },
   {
-    q: "What does “Estimated refundable taxes” mean?",
-    a: "It’s the sum of GST/HST and other refundable taxes detected on your receipts — a quick reference, not an official refund amount.",
+    q: 'What does "Estimated refundable taxes" mean?',
+    a: "It's the running total of GST/HST shown on your receipts — the input tax credits (ITCs) a self-employed person or small business can typically claim back from the CRA. It's a reference figure, not a guaranteed refund amount.",
   },
   {
     q: "Why is PST marked as non-refundable?",
-    a: "Provincial sales tax (PST) in most provinces is generally not recoverable for businesses, so we surface it separately from refundable taxes.",
+    a: "Provincial sales tax (PST — charged in BC, Saskatchewan, Manitoba, and Quebec's QST) is generally not recoverable as an input tax credit the way GST/HST is. We flag it separately so your records are accurate when you file.",
   },
   {
     q: "What if my receipt has no tax?",
-    a: "No problem — the receipt is still stored and categorized. Tax fields simply remain empty in your reports.",
+    a: "No problem. The receipt is still stored, dated, and categorized correctly. Tax fields simply show empty in your reports — which is accurate, since not every purchase is taxable.",
   },
   {
-    q: "Can I export reports?",
-    a: "Yes. Export tax-ready reports as PDF or CSV at any time — perfect for your accountant or tax software.",
+    q: "Can I export my expense reports?",
+    a: "Yes. Export as PDF or CSV any time — formatted for your accountant, bookkeeper, or your own CRA filing. Your data, your format, no lock-in.",
   },
   {
-    q: "What does “Reimbursable” mean?",
-    a: "Mark expenses as reimbursable when a client or employer should pay you back. Filter and export them as a single report.",
+    q: 'What does "Reimbursable" mean?',
+    a: "Tag any expense as reimbursable when a client or employer should pay you back. Filter your reimbursables into a separate report and send it directly — no more digging through receipts at billing time.",
   },
   {
-    q: "What’s included in Pro?",
-    a: "All features: real-time sync, AI extraction, mileage tracking, bulk upload, 10+ years storage, PDF & CSV exports, and email forwarding.",
+    q: "What's included in the paid plan?",
+    a: "Everything: unlimited receipt scanning, automatic GST/HST/PST extraction, mileage tracking, bulk upload, multi-device sync, PDF & CSV exports, email receipt forwarding, and 10+ years of secure cloud storage.",
   },
   {
     q: "Can I cancel anytime?",
-    a: "Yes. Cancel from the app in one tap — no questions asked, no hidden fees.",
+    a: "Yes — cancel in one tap from the app. No phone calls, no cancellation fees, no questions asked. Your data stays accessible until the end of your billing period.",
   },
   {
     q: "Is ReceiptOne a tax filing service?",
-    a: "No. ReceiptOne organizes your receipts and expenses so filing is easier — but we don’t file taxes on your behalf.",
+    a: "No. ReceiptOne organizes your receipts and expenses so that filing — whether you do it yourself or hand off to an accountant — is fast, accurate, and stress-free. We don't file taxes on your behalf.",
   },
 ];
 
@@ -62,7 +62,7 @@ export function Faq({ items = faqItems }: { items?: QA[] } = {}) {
 
       {/* Title */}
       <h2 className="mt-5 px-1 text-center font-display text-[28px] font-bold leading-[1.08] tracking-[-0.02em] text-black sm:text-[40px] md:text-[56px]">
-        Questions you’ll likely ask
+        Questions you'll likely ask
       </h2>
 
       {/* List */}
