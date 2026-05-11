@@ -98,6 +98,36 @@ gap-4                   ← between bottom-bar legal links
 
 ---
 
+## Landing Page Section Spacing
+
+The landing page uses **asymmetric padding** to visually group related sections together. The pattern:
+
+- Full padding on the "opening" side of a section
+- Compressed padding (`pb-4 sm:pb-6`) on the "closing" side when the next section is a visual continuation
+
+### Current groupings (ca.tsx order)
+
+| Section | Relationship | Padding |
+|---|---|---|
+| HowItWorks | standalone | `py-8 lg:py-12` |
+| InfoCards | opens group | `pt-16 pb-4 sm:pt-20 sm:pb-6` |
+| NotAll | closes group above / opens below | `pt-4 pb-4 sm:pt-6 sm:pb-6` |
+| Testimonials | closes group | `pt-4 pb-12 sm:pt-6 sm:pb-16` |
+| Trust (dark) | standalone | `pt-12 pb-6 sm:pt-16 sm:pb-8` |
+| Advantages | hugs Trust | `pt-4 pb-16 sm:pt-6 sm:pb-20` |
+| AppBanner | standalone artboard | `pt-1.5 pb-0 md:pt-2.5` |
+| Pricing | standalone | `pt-12 pb-4 sm:pt-16 sm:pb-6` |
+| Faq | hugs Pricing | `pt-4 pb-10 md:pt-6 md:pb-14` |
+
+### Rules
+
+- Grouped sections: **pb-4 sm:pb-6** on the section above, **pt-4 sm:pt-6** on the section below → ~32px total gap
+- Dark sections (Trust): keep at least **pb-6 sm:pb-8** so the dark bg doesn't feel truncated
+- Standalone sections: use symmetric `py-12 sm:py-16` or `py-16 sm:py-20`
+- Never use `py-16` or larger on interior pages (reserved for landing page only)
+
+---
+
 ## What NOT to use on interior pages
 
 | Class | Use instead | Note |
