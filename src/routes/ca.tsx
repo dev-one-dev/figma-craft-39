@@ -8,7 +8,6 @@ import { NotAll } from "@/components/site/NotAll";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Trust } from "@/components/site/Trust";
 import { Advantages } from "@/components/site/Advantages";
-import { AppBanner } from "@/components/site/AppBanner";
 import { Pricing } from "@/components/site/Pricing";
 import { Faq, faqItems } from "@/components/site/Faq";
 import { Footer } from "@/components/site/Footer";
@@ -70,7 +69,6 @@ function CanadaPage() {
       <Testimonials />
       <Trust region="ca" />
       <Advantages />
-      <AppBanner />
       <Pricing region="ca" />
       <Faq />
       <Footer />

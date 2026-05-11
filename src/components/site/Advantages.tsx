@@ -5,7 +5,7 @@ function scrollToApps(e: React.MouseEvent) {
 
 export function Advantages() {
   return (
-    <section id="advantages" className="w-full scroll-mt-28 px-4 pt-4 pb-16 sm:px-6 sm:pt-6 sm:pb-20 lg:px-8">
+    <section id="advantages" className="w-full scroll-mt-28 px-4 pt-4 pb-12 sm:px-6 sm:pt-6 sm:pb-16 lg:px-8">
       <div className="mx-auto w-full max-w-[1200px]">
 
         {/* Header */}
