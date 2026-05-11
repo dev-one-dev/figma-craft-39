@@ -59,42 +59,41 @@ export function InfoCards() {
 
         </div>
 
-        {/* Feature rows */}
-        <div className="flex flex-col gap-20 sm:gap-24">
+        {/* Feature cards */}
+        <div className="flex flex-col gap-6">
           {FEATURES.map((f, i) => {
             const isEven = i % 2 === 0;
             return (
-              <div
-                key={f.title}
-                className={`flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-16 ${
-                  isEven ? "lg:flex-row" : "lg:flex-row-reverse"
-                }`}
-              >
-                {/* Text */}
-                <div className="flex-1 text-center lg:text-left">
-                  <p className="font-sans text-xs font-semibold uppercase tracking-widest text-[#f97316]">
-                    {f.label}
-                  </p>
-                  <h3 className="mt-3 font-display text-2xl font-semibold leading-snug text-black sm:text-3xl">
-                    {f.title}
-                  </h3>
-                  <p className="mt-4 text-base leading-relaxed text-black/55">
-                    {f.desc}
-                  </p>
-                </div>
+              <div key={f.title} className="rounded-3xl bg-white p-8 shadow-sm lg:p-12">
+                <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
 
-                {/* Phone mockup */}
-                <div className="flex flex-shrink-0 justify-center lg:w-[340px]">
-                  <div className="relative">
-                    <div className="absolute inset-0 rounded-[2.5rem] bg-[#f97316]/10 blur-2xl" />
-                    <img
-                      src={f.img}
-                      alt={f.alt}
-                      className="relative h-auto w-[260px] rounded-[2rem] shadow-[0_24px_64px_rgba(0,0,0,0.5)] sm:w-[300px]"
-                      loading="lazy"
-                      draggable={false}
-                    />
+                  {/* Text */}
+                  <div className="text-center lg:text-left">
+                    <p className="font-sans text-xs font-semibold uppercase tracking-widest text-[#f97316]">
+                      {f.label}
+                    </p>
+                    <h3 className="mt-3 font-display text-3xl font-semibold tracking-tight text-black sm:text-4xl">
+                      {f.title}
+                    </h3>
+                    <p className="mt-4 text-base leading-relaxed text-neutral-700">
+                      {f.desc}
+                    </p>
                   </div>
+
+                  {/* Phone mockup — order-first on odd rows puts image left */}
+                  <div className={`flex justify-center ${!isEven ? "lg:order-first" : ""}`}>
+                    <div className="relative">
+                      <div className="absolute inset-0 rounded-[2.5rem] bg-[#f97316]/10 blur-2xl" />
+                      <img
+                        src={f.img}
+                        alt={f.alt}
+                        className="relative h-auto w-[260px] rounded-[2rem] shadow-[0_24px_64px_rgba(0,0,0,0.5)] sm:w-[300px]"
+                        loading="lazy"
+                        draggable={false}
+                      />
+                    </div>
+                  </div>
+
                 </div>
               </div>
             );
