@@ -9,7 +9,7 @@ const TESTIMONIALS = [
     name: "Maria Chen",
     role: "Freelance Graphic Designer",
     location: "Vancouver, BC",
-    avatar: avatar1,
+    avatar: avatar3,
   },
   {
     quote:
@@ -17,7 +17,7 @@ const TESTIMONIALS = [
     name: "David Okonkwo",
     role: "Independent IT Contractor",
     location: "Toronto, ON",
-    avatar: avatar2,
+    avatar: avatar1,
   },
   {
     quote:
@@ -25,7 +25,7 @@ const TESTIMONIALS = [
     name: "Sophie Tremblay",
     role: "Studio Owner",
     location: "Montréal, QC",
-    avatar: avatar3,
+    avatar: avatar2,
   },
 ] as const;
 
