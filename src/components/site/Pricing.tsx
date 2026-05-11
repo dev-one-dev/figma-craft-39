@@ -211,9 +211,9 @@ function PlanCard({ plan }: { plan: Plan }) {
             src={image.src}
             alt={image.alt}
             aria-hidden
-            loading="lazy"
+            loading="eager"
             decoding="async"
-            className="pointer-events-none absolute bottom-0 right-0 z-0 w-48 translate-x-[30%] translate-y-[30%] select-none object-contain sm:w-56"
+            className="pointer-events-none absolute bottom-0 -right-24 z-0 w-48 select-none object-contain sm:-right-28 sm:w-56"
           />
         )}
 
