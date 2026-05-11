@@ -1,3 +1,7 @@
+import phoneReceiptsImg from "@/assets/figma/phone-receipts-3.webp";
+import beaverMonthImg from "@/assets/figma/pr-beaver-month.webp";
+import phoneReportsImg from "@/assets/figma/phone-reports.webp";
+
 type Region = "ca" | "us";
 
 interface Plan {
@@ -109,6 +113,13 @@ const US_PLANS: Plan[] = [
   },
 ];
 
+/** Asset mapped by plan id — used for every region. */
+const PLAN_IMAGES: Record<string, { src: string; alt: string }> = {
+  week: { src: phoneReceiptsImg, alt: "" },
+  month: { src: beaverMonthImg, alt: "" },
+  year: { src: phoneReportsImg, alt: "" },
+};
+
 function scrollToApps(e: React.MouseEvent) {
   e.preventDefault();
   document.getElementById("apps")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -155,114 +166,145 @@ export function Pricing({ region = "ca" }: { region?: Region }) {
 function PlanCard({ plan }: { plan: Plan }) {
   const isPopular = plan.popular === true;
   const hasBadge = isPopular || !!plan.badge;
+  const image = PLAN_IMAGES[plan.id];
 
   return (
-    <div
-      className={[
-        "relative flex flex-col rounded-3xl p-7",
-        hasBadge ? "pt-10" : "",
-        isPopular
-          ? "bg-black text-white ring-2 ring-black"
-          : "border border-black/[0.07] bg-white text-black shadow-[0_2px_12px_rgba(0,0,0,0.06)]",
-      ].join(" ")}
-    >
-      {/* Popular badge */}
+    /*
+     * Outer wrapper — provides vertical clearance for the badge that sits
+     * above the card. It must NOT have overflow-hidden so the badge is visible.
+     */
+    <div className={`relative ${hasBadge ? "pt-4" : ""}`}>
+
+      {/* Most Popular badge */}
       {isPopular && (
-        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-[#f97316] px-4 py-1 font-sans text-xs font-semibold text-white shadow-[0_4px_12px_rgba(249,115,22,0.4)]">
+        <span className="absolute top-0 left-1/2 z-20 -translate-x-1/2 rounded-full bg-[#f97316] px-4 py-1 font-sans text-xs font-semibold text-white shadow-[0_4px_12px_rgba(249,115,22,0.4)]">
           Most Popular
         </span>
       )}
 
-      {/* Best Deal badge */}
+      {/* Best Deal / custom badge */}
       {plan.badge && !isPopular && (
-        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#fed7aa] px-4 py-1 font-sans text-xs font-semibold text-black shadow-[0_4px_12px_rgba(0,0,0,0.10)]">
+        <span className="absolute top-0 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#fed7aa] px-4 py-1 font-sans text-xs font-semibold text-black shadow-[0_4px_12px_rgba(0,0,0,0.10)]">
           {plan.badge}
         </span>
       )}
 
-      {/* Plan name */}
-      <p
-        className={[
-          "font-sans text-sm font-semibold uppercase tracking-widest",
-          isPopular ? "text-white/50" : "text-black/40",
-        ].join(" ")}
-      >
-        {plan.name}
-      </p>
-
-      {/* Price */}
-      <div className="mt-3 flex items-baseline gap-1.5">
-        <span
-          className={[
-            "font-display text-4xl font-bold tracking-tight",
-            isPopular ? "text-white" : "text-black",
-          ].join(" ")}
-        >
-          ${plan.price}
-        </span>
-        <span
-          className={[
-            "font-sans text-sm",
-            isPopular ? "text-white/50" : "text-black/40",
-          ].join(" ")}
-        >
-          {plan.period}
-        </span>
-      </div>
-
-      {/* Original price strikethrough */}
-      {plan.originalPrice && (
-        <p className={["mt-1 font-sans text-sm line-through", isPopular ? "text-white/30" : "text-black/25"].join(" ")}>
-          ${plan.originalPrice} {plan.period}
-        </p>
-      )}
-
-      {/* Divider */}
+      {/*
+       * Card — overflow-hidden crops the peeking image at card edges.
+       * position:relative creates the stacking context for z-index layers.
+       */}
       <div
         className={[
-          "my-6 h-px",
-          isPopular ? "bg-white/10" : "bg-black/[0.07]",
-        ].join(" ")}
-      />
-
-      {/* Features */}
-      <ul className="flex flex-1 flex-col gap-3">
-        {plan.features.map((f) => (
-          <li key={f} className="flex items-start gap-2.5">
-            <span
-              className={[
-                "mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full",
-                isPopular ? "bg-white/15" : "bg-black/[0.06]",
-              ].join(" ")}
-              aria-hidden
-            >
-              <CheckIcon isPopular={isPopular} />
-            </span>
-            <span
-              className={[
-                "font-sans text-sm leading-snug",
-                isPopular ? "text-white/80" : "text-black/65",
-              ].join(" ")}
-            >
-              {f}
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      {/* CTA */}
-      <a
-        href="#apps"
-        onClick={scrollToApps}
-        className={[
-          "mt-8 inline-flex items-center justify-center rounded-full px-6 py-3.5 font-display text-sm font-semibold transition-all hover:scale-[1.02]",
+          "relative flex flex-col overflow-hidden rounded-3xl p-7",
+          hasBadge ? "pt-10" : "",
           isPopular
-            ? "bg-white text-black hover:opacity-90"
-            : "bg-black text-white hover:opacity-90",
+            ? "bg-black text-white ring-2 ring-black"
+            : "border border-black/[0.07] bg-white text-black shadow-[0_2px_12px_rgba(0,0,0,0.06)]",
         ].join(" ")}
       >
-        Start free trial
-      </a>
+        {/*
+         * Peek-a-boo asset — z-0, sits behind the z-10 content layer.
+         * Anchored to bottom-right; overflow-hidden on the card crops it.
+         */}
+        {image && (
+          <img
+            src={image.src}
+            alt={image.alt}
+            aria-hidden
+            loading="lazy"
+            decoding="async"
+            className="pointer-events-none absolute bottom-0 right-0 z-0 w-32 select-none object-contain sm:w-36"
+          />
+        )}
+
+        {/* Content layer — z-10 keeps text and CTA above the asset */}
+        <div className="relative z-10 flex flex-1 flex-col">
+
+          {/* Plan name */}
+          <p
+            className={[
+              "font-sans text-sm font-semibold uppercase tracking-widest",
+              isPopular ? "text-white/50" : "text-black/40",
+            ].join(" ")}
+          >
+            {plan.name}
+          </p>
+
+          {/* Current price */}
+          <div className="mt-3 flex items-baseline gap-1.5">
+            <span
+              className={[
+                "font-display text-4xl font-bold tracking-tight",
+                isPopular ? "text-white" : "text-black",
+              ].join(" ")}
+            >
+              ${plan.price}
+            </span>
+            <span
+              className={[
+                "font-sans text-sm",
+                isPopular ? "text-white/50" : "text-black/40",
+              ].join(" ")}
+            >
+              {plan.period}
+            </span>
+          </div>
+
+          {/* Original price — strikethrough */}
+          {plan.originalPrice && (
+            <p className={["mt-1 font-sans text-sm line-through", isPopular ? "text-white/30" : "text-black/25"].join(" ")}>
+              ${plan.originalPrice} {plan.period}
+            </p>
+          )}
+
+          {/* Divider */}
+          <div
+            className={[
+              "my-6 h-px",
+              isPopular ? "bg-white/10" : "bg-black/[0.07]",
+            ].join(" ")}
+          />
+
+          {/* Features */}
+          <ul className="flex flex-1 flex-col gap-3">
+            {plan.features.map((f) => (
+              <li key={f} className="flex items-start gap-2.5">
+                <span
+                  className={[
+                    "mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full",
+                    isPopular ? "bg-white/15" : "bg-black/[0.06]",
+                  ].join(" ")}
+                  aria-hidden
+                >
+                  <CheckIcon isPopular={isPopular} />
+                </span>
+                <span
+                  className={[
+                    "font-sans text-sm leading-snug",
+                    isPopular ? "text-white/80" : "text-black/65",
+                  ].join(" ")}
+                >
+                  {f}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA */}
+          <a
+            href="#apps"
+            onClick={scrollToApps}
+            className={[
+              "mt-8 inline-flex items-center justify-center rounded-full px-6 py-3.5 font-display text-sm font-semibold transition-all hover:scale-[1.02]",
+              isPopular
+                ? "bg-white text-black hover:opacity-90"
+                : "bg-black text-white hover:opacity-90",
+            ].join(" ")}
+          >
+            Start free trial
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
