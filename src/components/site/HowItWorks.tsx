@@ -58,22 +58,22 @@ export function HowItWorks({ region = "ca" }: { region?: Region }) {
   return (
     <section
       id="how-it-works"
-      className="w-full px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28"
+      className="w-full px-4 pt-8 pb-16 sm:px-6 sm:pt-10 sm:pb-20 lg:px-8 lg:pt-12 lg:pb-28"
     >
       <div className="mx-auto w-full max-w-[1200px]">
         <div className="mx-auto max-w-2xl text-center">
           <p className="font-sans text-xs font-semibold uppercase tracking-widest text-black/35">
             How it works
           </p>
-          <h2 className="mt-3 font-display text-3xl font-semibold leading-tight tracking-tight text-black sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight text-black sm:text-4xl lg:text-[2.75rem]">
             {heading}
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-black/55 sm:text-lg">
+          <p className="mt-3 text-base leading-relaxed text-black/55 sm:text-lg">
             {sub}
           </p>
         </div>
 
-        <ol className="mt-12 grid gap-5 sm:gap-6 md:grid-cols-3 lg:mt-16">
+        <ol className="mt-10 grid gap-5 sm:gap-6 md:grid-cols-3 lg:mt-12">
           {steps.map((step, i) => {
             const Icon = step.icon;
             return (
