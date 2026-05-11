@@ -4,6 +4,7 @@
  */
 import { SITE_URL } from "@/lib/seo";
 import recordKeepingUrl from "@/assets/figma/record keeping.png";
+import mileageUrl from "@/assets/figma/mileage.png";
 
 export type ContentBlock =
   | { type: "p"; text: string }
@@ -236,9 +237,8 @@ export const ARTICLES: Article[] = [
     readTime: 7,
     publishedAt: "2025-03-24",
     author: { name: "Marcus Chen", role: "Tax Specialist" },
-    imageUrl:
-      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80",
-    imageAlt: "Vehicle dashboard and steering wheel viewed from the driver's seat",
+    imageUrl: mileageUrl,
+    imageAlt: "CRA mileage tracking for Canadian self-employed drivers",
     tags: ["mileage", "automobile", "logbook", "CRA", "vehicle expenses"],
     body: [
       {
