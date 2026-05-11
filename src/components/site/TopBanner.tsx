@@ -54,7 +54,7 @@ const TOP_BANNER_CA_LOOP_CSS = `
 
 function scrollToApps(e: React.MouseEvent) {
   e.preventDefault();
-  document.getElementById("apps")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 export function TopBanner() {
