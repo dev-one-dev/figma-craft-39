@@ -44,10 +44,10 @@ export function Footer({ region = "ca" }: FooterProps) {
 
   return (
     <footer className="w-full bg-[#0d0d14] text-white">
-      <div className="mx-auto max-w-[1200px] px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-20">
+      <div className="mx-auto max-w-[1200px] px-4 pt-8 pb-4 sm:px-6 lg:px-8 lg:pt-10">
 
         {/* Main grid */}
-        <div className="grid gap-12 lg:grid-cols-4">
+        <div className="grid gap-6 lg:grid-cols-4">
 
           {/* Brand column */}
           <div className="lg:col-span-1">
@@ -61,12 +61,12 @@ export function Footer({ region = "ca" }: FooterProps) {
               <img src={logoWordmark} alt="ReceiptOne" className="h-5 shrink-0 brightness-0 invert" />
             </button>
 
-            <p className="mt-5 text-sm leading-relaxed text-white/45">
+            <p className="mt-3 text-sm leading-relaxed text-white/45">
               {tagline}
             </p>
 
             {/* Social */}
-            <div className="mt-8 flex items-center gap-4">
+            <div className="mt-4 flex items-center gap-4">
               {SOCIAL.map(({ Icon, label, href }) => (
                 <a
                   key={label}
@@ -83,14 +83,14 @@ export function Footer({ region = "ca" }: FooterProps) {
           </div>
 
           {/* Nav columns */}
-          <div className="grid grid-cols-3 gap-8 lg:col-span-3">
+          <div className="grid grid-cols-3 gap-4 lg:col-span-3">
 
             {/* Product */}
             <div>
               <p className="font-display text-sm font-semibold uppercase tracking-widest text-white/30">
                 Product
               </p>
-              <ul className="mt-5 space-y-3">
+              <ul className="mt-2 space-y-1.5">
                 {PRODUCT_LINKS.map(({ label, href }) => (
                   <li key={label}>
                     <a
@@ -109,7 +109,7 @@ export function Footer({ region = "ca" }: FooterProps) {
               <p className="font-display text-sm font-semibold uppercase tracking-widest text-white/30">
                 Account
               </p>
-              <ul className="mt-5 space-y-3">
+              <ul className="mt-2 space-y-1.5">
                 {COMPANY_LINKS_CA.map(({ label, href }) => (
                   <li key={label}>
                     <Link
@@ -128,7 +128,7 @@ export function Footer({ region = "ca" }: FooterProps) {
               <p className="font-display text-sm font-semibold uppercase tracking-widest text-white/30">
                 Legal
               </p>
-              <ul className="mt-5 space-y-3">
+              <ul className="mt-2 space-y-1.5">
                 {LEGAL_LINKS.map(({ label, href }) => (
                   <li key={label}>
                     <Link
@@ -146,11 +146,11 @@ export function Footer({ region = "ca" }: FooterProps) {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/[0.07] pt-6 sm:flex-row">
+        <div className="mt-6 flex flex-col items-center justify-between gap-2 border-t border-white/[0.07] pt-4 sm:flex-row">
           <p className="font-sans text-sm text-white/30">
             &copy; {new Date().getFullYear()} ReceiptOne. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4">
             {LEGAL_LINKS.map(({ label, href }) => (
               <Link
                 key={label}

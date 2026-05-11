@@ -58,9 +58,9 @@ function ArticlesIndexPage() {
       <Header />
 
       {/* Page hero */}
-      <section className="pt-32 pb-12 text-center">
+      <section className="pt-24 pb-4 text-center">
         <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
-          <nav aria-label="breadcrumb" className="mb-6 flex justify-center">
+          <nav aria-label="breadcrumb" className="mb-2 flex justify-center">
             <ol className="flex items-center gap-2 font-sans text-sm text-black/40">
               <li>
                 <Link to="/ca" className="hover:text-black transition-colors duration-150">
@@ -100,19 +100,19 @@ function ArticlesIndexPage() {
 
 function CtaBanner() {
   return (
-    <section className="bg-[#0d0d14] py-16 sm:py-20">
+    <section className="bg-[#0d0d14] py-6 sm:py-8">
       <div className="mx-auto max-w-[1200px] px-4 text-center sm:px-6 lg:px-8">
         <p className="font-sans text-xs font-semibold uppercase tracking-widest text-white/30">
           Get Started
         </p>
-        <h2 className="mt-3 font-display text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
+        <h2 className="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
           Start managing your receipts in minutes
         </h2>
-        <p className="mx-auto mt-4 max-w-md font-sans text-base text-white/55">
+        <p className="mx-auto mt-2 max-w-md font-sans text-base text-white/55">
           Join thousands of Canadian freelancers who use ReceiptOne to stay CRA-compliant
           without the paperwork headache.
         </p>
-        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <Link
             to={"/signup" as any}
             className="inline-flex items-center gap-2 rounded-full bg-[#f97316] px-6 py-3 font-sans text-sm font-semibold text-white transition-all duration-200 hover:bg-[#ea6c0a] hover:shadow-[0_8px_24px_rgba(249,115,22,0.35)]"

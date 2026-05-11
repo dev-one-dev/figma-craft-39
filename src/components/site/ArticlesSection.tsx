@@ -55,19 +55,19 @@ function FeaturedCard({ article }: { article: Article }) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col p-6 sm:p-7">
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
         <CategoryPill label={article.category} variant="featured" />
 
-        <h3 className="mt-4 font-display text-2xl font-semibold leading-tight tracking-tight text-black sm:text-3xl">
+        <h3 className="mt-2 font-display text-2xl font-semibold leading-tight tracking-tight text-black sm:text-3xl">
           {article.title}
         </h3>
 
-        <p className="mt-3 flex-1 font-sans text-base leading-relaxed text-black/60">
+        <p className="mt-1.5 flex-1 font-sans text-base leading-relaxed text-black/60">
           {article.excerpt}
         </p>
 
         {/* Meta row */}
-        <div className="mt-5 flex items-center gap-4 text-sm text-black/40">
+        <div className="mt-3 flex items-center gap-4 text-sm text-black/40">
           <span className="flex items-center gap-1.5">
             <Clock className="size-3.5" aria-hidden />
             {article.readTime} min read
@@ -77,7 +77,7 @@ function FeaturedCard({ article }: { article: Article }) {
         </div>
 
         {/* CTA */}
-        <div className="mt-5 flex items-center gap-1.5 font-sans text-sm font-semibold text-[#f97316]">
+        <div className="mt-3 flex items-center gap-1.5 font-sans text-sm font-semibold text-[#f97316]">
           Read article
           <ArrowRight
             className="size-4 transition-transform duration-200 group-hover:translate-x-1"
@@ -110,15 +110,15 @@ function SmallCard({ article }: { article: Article }) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col p-5">
+      <div className="flex flex-1 flex-col p-3">
         <CategoryPill label={article.category} variant="neutral" />
 
-        <h3 className="mt-3 font-display text-base font-semibold leading-snug tracking-tight text-black lg:text-lg">
+        <h3 className="mt-1.5 font-display text-base font-semibold leading-snug tracking-tight text-black lg:text-lg">
           {article.title}
         </h3>
 
         {/* Meta row */}
-        <div className="mt-auto pt-4 flex items-center gap-3 text-xs text-black/40">
+        <div className="mt-auto pt-2 flex items-center gap-3 text-xs text-black/40">
           <span className="flex items-center gap-1">
             <Clock className="size-3" aria-hidden />
             {article.readTime} min
@@ -156,16 +156,16 @@ export function ArticlesSection({
   if (!featured) return null;
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section className="py-6 sm:py-8 lg:py-10">
       <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         {showHeader && (
-          <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="font-sans text-xs font-semibold uppercase tracking-widest text-black/35">
                 Knowledge Base
               </p>
-              <h2 className="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight text-black sm:text-4xl lg:text-[2.75rem]">
+              <h2 className="mt-1 font-display text-3xl font-semibold leading-tight tracking-tight text-black sm:text-4xl lg:text-[2.75rem]">
                 Tax guides for Canadian freelancers
               </h2>
             </div>
@@ -181,11 +181,11 @@ export function ArticlesSection({
         )}
 
         {/* Row 1: featured (2/3) + two stacked small cards (1/3) */}
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-[2fr_1fr]">
+        <div className="grid grid-cols-1 gap-3 lg:grid-cols-[2fr_1fr]">
           <FeaturedCard article={featured} />
 
           {row1Right.length > 0 && (
-            <div className="grid grid-rows-2 gap-5">
+            <div className="grid grid-rows-2 gap-3">
               {row1Right.map((article) => (
                 <SmallCard key={article.slug} article={article} />
               ))}
@@ -195,7 +195,7 @@ export function ArticlesSection({
 
         {/* Row 2: up to 3 equal cards */}
         {row2.length > 0 && (
-          <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {row2.map((article) => (
               <SmallCard key={article.slug} article={article} />
             ))}
