@@ -37,15 +37,27 @@ export const Route = (createFileRoute as any)("/articles/")({
       },
     };
 
+    const itemListJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Tax Guides for Canadian Freelancers",
+      url: `${SITE_URL}/articles`,
+      numberOfItems: ARTICLES.length,
+      itemListElement: ARTICLES.map((a, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${SITE_URL}/articles/${a.slug}`,
+        name: a.title,
+      })),
+    };
+
     return {
       meta: seo.meta,
       links: seo.links,
       scripts: [
         { type: "application/ld+json", children: JSON.stringify(breadcrumb) },
-        {
-          type: "application/ld+json",
-          children: JSON.stringify(collectionJsonLd),
-        },
+        { type: "application/ld+json", children: JSON.stringify(collectionJsonLd) },
+        { type: "application/ld+json", children: JSON.stringify(itemListJsonLd) },
       ],
     };
   },

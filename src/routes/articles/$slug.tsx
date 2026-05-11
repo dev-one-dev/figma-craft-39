@@ -256,6 +256,20 @@ function ArticleDetailPage() {
           <span aria-hidden>/</span>
           <span className="truncate font-medium text-black/70">{article.category}</span>
         </nav>
+
+        {article.clusterPillar && article.clusterName && (
+          <p className="mt-3 font-sans text-sm text-black/45">
+            Part of the{" "}
+            <Link
+              to={"/articles/$slug" as any}
+              params={{ slug: article.clusterPillar } as any}
+              className="font-medium text-black underline underline-offset-2 transition-colors duration-150 hover:text-[#f97316]"
+            >
+              {article.clusterName}
+            </Link>{" "}
+            guide
+          </p>
+        )}
       </div>
 
       <article>
