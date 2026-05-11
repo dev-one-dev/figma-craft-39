@@ -122,7 +122,10 @@ const PLAN_IMAGES: Record<string, { src: string; alt: string }> = {
 
 function scrollToApps(e: React.MouseEvent) {
   e.preventDefault();
-  document.getElementById("apps")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const url = /iPhone|iPad|iPod/i.test(navigator.userAgent)
+    ? "https://apps.apple.com/app/receiptone/id0000000000"
+    : "https://play.google.com/store/apps/details?id=com.receiptone.app";
+  window.open(url, "_blank", "noopener,noreferrer");
 }
 
 export function Pricing({ region = "ca" }: { region?: Region }) {
@@ -292,7 +295,7 @@ function PlanCard({ plan }: { plan: Plan }) {
 
           {/* CTA */}
           <a
-            href="#apps"
+            href="#"
             onClick={scrollToApps}
             className={[
               "mt-8 inline-flex items-center justify-center rounded-full px-6 py-3.5 font-display text-sm font-semibold transition-all hover:scale-[1.02]",
