@@ -39,7 +39,7 @@ export function Footer({ region = "ca" }: FooterProps) {
   const tagline =
     region === "us"
       ? "The fastest way to turn receipts into IRS-ready expense reports. Built for US freelancers and contractors."
-      : "The fastest way to turn receipts into CRA-ready expense reports. Built for Canadian freelancers and contractors.";
+      : "Snap a receipt, get a CRA-ready report. Built for Canadian freelancers and contractors who'd rather work than do paperwork.";
 
   return (
     <footer className="w-full bg-[#0d0d14] text-white">

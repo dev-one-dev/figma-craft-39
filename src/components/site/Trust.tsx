@@ -94,7 +94,7 @@ export function Trust({ region = "ca" }: { region?: Region }) {
             {heading}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-white/50 sm:text-lg">
-            Your financial data handled with the care it deserves.
+            AES-256 encryption, CRA-compliant records, and 10-year cloud backup — purpose-built for Canadian freelancers.
           </p>
         </div>
 

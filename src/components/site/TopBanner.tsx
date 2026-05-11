@@ -162,7 +162,7 @@ export function TopBanner() {
           </div>
           <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
             <span className="font-display text-base font-semibold leading-5 text-black transition-transform duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/users:-translate-y-px">
-              More{" "}
+              Over{" "}
               <span className="relative inline-block">
                 <span className="relative z-10 transition-colors duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/users:text-[#f97316]">
                   3,000
@@ -172,7 +172,7 @@ export function TopBanner() {
               users
             </span>
             <span className="font-display text-base leading-6 text-[#9192a1] transition-colors duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/users:text-black">
-              keeping their money
+              keeping more of what they earn
             </span>
           </div>
         </div>

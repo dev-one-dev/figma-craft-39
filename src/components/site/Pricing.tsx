@@ -130,10 +130,10 @@ export function Pricing({ region = "ca" }: { region?: Region }) {
             Pricing
           </p>
           <h2 className="mt-3 font-display text-3xl font-semibold leading-tight tracking-tight text-black sm:text-4xl lg:text-[2.75rem]">
-            Simple, transparent pricing
+            Pick your plan. Cancel anytime.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-black/55 sm:text-lg">
-            Start free for 7 days. No credit card required. Cancel anytime.
+            Start free for 7 days. Cancel anytime.
           </p>
         </div>
 

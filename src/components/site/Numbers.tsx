@@ -2,10 +2,10 @@ import { useState } from "react";
 
 const STATS = [
   { value: "4.8", label: "Average rating" },
-  { value: "150K+", label: "Miles tracked" },
+  { value: "150K+", label: "Kilometres tracked" },
   { value: "12K+", label: "Reports generated" },
   { value: "100K+", label: "Receipts scanned" },
-  { value: "10K+", label: "Active users" },
+  { value: "$4.2M+", label: "In deductions tracked" },
 ] as const;
 
 export function Numbers() {

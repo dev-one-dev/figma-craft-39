@@ -62,7 +62,7 @@ export function Faq({ items = faqItems }: { items?: QA[] } = {}) {
 
       {/* Title */}
       <h2 className="mt-5 px-1 text-center font-display text-[28px] font-bold leading-[1.08] tracking-[-0.02em] text-black sm:text-[40px] md:text-[56px]">
-        Questions you'll likely ask
+        Everything you need to know
       </h2>
 
       {/* List */}
