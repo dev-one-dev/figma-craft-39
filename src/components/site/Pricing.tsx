@@ -58,7 +58,7 @@ const CA_PLANS: Plan[] = [
     badge: "Best Deal",
     features: [
       "Everything in Monthly",
-      "2 months free vs monthly",
+      "2 months free vs. monthly",
       "Unlimited cloud storage",
       "Multi-device sync",
       "Priority support",
@@ -141,10 +141,10 @@ export function Pricing({ region = "ca" }: { region?: Region }) {
             Pricing
           </p>
           <h2 className="mt-3 font-display text-3xl font-semibold leading-tight tracking-tight text-black sm:text-4xl lg:text-[2.75rem]">
-            Pick your plan. Cancel anytime.
+            Simple pricing. Cancel anytime.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-black/55 sm:text-lg">
-            Start free for 7 days. Cancel anytime.
+            Try it free for 7 days — no credit card required.
           </p>
         </div>
 

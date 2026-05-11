@@ -5,7 +5,7 @@ const STATS = [
   { value: "150K+", label: "Kilometres tracked" },
   { value: "12K+", label: "Reports generated" },
   { value: "100K+", label: "Receipts scanned" },
-  { value: "$4.2M+", label: "In deductions tracked" },
+  { value: "$4.2M+", label: "Deductions tracked" },
 ] as const;
 
 export function Numbers() {

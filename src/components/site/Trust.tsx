@@ -37,7 +37,7 @@ const CA_ITEMS: TrustItem[] = [
   {
     Icon: ReceiptTaxIcon,
     title: "GST / HST / PST tracking",
-    desc: "Input tax credits tracked automatically by province. Maximize your deductions without lifting a finger.",
+    desc: "Input tax credits tracked automatically by province. Every eligible deduction captured — nothing slips through.",
   },
 ];
 
@@ -94,7 +94,7 @@ export function Trust({ region = "ca" }: { region?: Region }) {
             {heading}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-white/50 sm:text-lg">
-            AES-256 encryption, CRA-compliant records, and 10-year cloud backup — purpose-built for Canadian freelancers.
+            AES-256 encryption, CRA-compliant records, and 10-year cloud backup — built to protect your data and your deductions.
           </p>
         </div>
 
