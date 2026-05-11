@@ -66,7 +66,7 @@ function CanadaPage() {
       <Numbers />
       <HowItWorks region="ca" />
       <InfoCards />
-      <NotAll region="ca" />
+      <NotAll />
       <Testimonials />
       <Trust region="ca" />
       <Advantages />

@@ -45,7 +45,7 @@ export function TopBanner() {
         <div className="flex w-full flex-col items-start gap-3">
 
           {/* Desktop: single row [text] [arrow] [button] */}
-          <div className="hidden items-center gap-3 md:flex">
+          <div className="hidden items-center gap-3 md:flex md:ml-8">
             <span className="whitespace-nowrap font-script text-[18px] leading-none text-[#9192a1]">
               7 days free trial available
             </span>
@@ -73,7 +73,7 @@ export function TopBanner() {
             7 days free trial available
           </p>
 
-          <p className="font-sans text-sm text-black/40">
+          <p className="w-full text-center font-sans text-sm text-black/40">
             No credit card required · Cancel anytime · Secure cloud backup
           </p>
         </div>
