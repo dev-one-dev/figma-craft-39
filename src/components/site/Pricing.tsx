@@ -195,7 +195,7 @@ function PlanCard({ plan }: { plan: Plan }) {
        */}
       <div
         className={[
-          "relative flex flex-col overflow-hidden rounded-3xl p-7",
+          "relative flex h-full flex-col overflow-hidden rounded-3xl p-7",
           hasBadge ? "pt-10" : "",
           isPopular
             ? "bg-black text-white ring-2 ring-black"
