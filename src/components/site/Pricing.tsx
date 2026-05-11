@@ -173,7 +173,7 @@ function PlanCard({ plan }: { plan: Plan }) {
      * Outer wrapper — provides vertical clearance for the badge that sits
      * above the card. It must NOT have overflow-hidden so the badge is visible.
      */
-    <div className={`relative ${hasBadge ? "pt-4" : ""}`}>
+    <div className="relative pt-4">
 
       {/* Most Popular badge */}
       {isPopular && (
