@@ -1,5 +1,4 @@
 import beaverHeroVideo from "@/assets/figma/hero-beaver-hq.mp4";
-import beaverHeroVideoTransparent from "@/assets/figma/hero-beaver-alpha.webm";
 import beaverHeroPoster from "@/assets/figma/hero-beaver-poster.png";
 import avatar1 from "@/assets/figma/avatar-1.webp";
 import avatar2 from "@/assets/figma/avatar-2.webp";
@@ -172,7 +171,6 @@ export function TopBanner() {
             poster={beaverHeroPoster}
             aria-label="Beaver mascot wearing a Canadian cap, reading a receipt"
           >
-            <source src={beaverHeroVideoTransparent} type="video/webm" />
             <source src={beaverHeroVideo} type="video/mp4" />
           </video>
         </div>
