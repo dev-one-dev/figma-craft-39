@@ -72,18 +72,6 @@ function ArticlesIndexPage() {
       {/* Page hero */}
       <section className="pt-24 pb-4 text-center">
         <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
-          <nav aria-label="breadcrumb" className="mb-2 flex justify-center">
-            <ol className="flex items-center gap-2 font-sans text-sm text-black/40">
-              <li>
-                <Link to="/ca" className="hover:text-black transition-colors duration-150">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden>/</li>
-              <li className="text-black/70 font-medium">Articles</li>
-            </ol>
-          </nav>
-
           <p className="font-sans text-xs font-semibold uppercase tracking-widest text-black/35">
             Knowledge Base
           </p>

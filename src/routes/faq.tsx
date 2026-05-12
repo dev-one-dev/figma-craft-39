@@ -39,18 +39,6 @@ function FaqPage() {
       {/* Hero */}
       <section className="pt-24 pb-4 text-center">
         <div className="mx-auto max-w-[760px] px-4 sm:px-6 lg:px-0">
-          <nav aria-label="breadcrumb" className="mb-2 flex justify-center">
-            <ol className="flex items-center gap-2 font-sans text-sm text-black/40">
-              <li>
-                <Link to="/ca" className="transition-colors duration-150 hover:text-black">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden>/</li>
-              <li className="font-medium text-black/70">Help Center</li>
-            </ol>
-          </nav>
-
           <p className="font-sans text-xs font-semibold uppercase tracking-widest text-black/35">
             Help Center
           </p>
