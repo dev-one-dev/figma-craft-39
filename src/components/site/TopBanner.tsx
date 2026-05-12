@@ -162,7 +162,7 @@ export function TopBanner() {
         <div className="w-full">
           <video
             style={{ background: "transparent" }}
-            className="mx-auto block w-full max-w-[1200px] bg-transparent object-contain"
+            className="mx-auto block w-full max-w-[1200px] object-contain mix-blend-multiply"
             autoPlay
             loop
             muted
