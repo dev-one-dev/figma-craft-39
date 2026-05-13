@@ -249,14 +249,14 @@ function PlanCard({ plan }: { plan: Plan }) {
                 isPopular ? "text-white/50" : "text-black/40",
               ].join(" ")}
             >
-              {plan.period}
+              {plan.currency} {plan.period}
             </span>
           </div>
 
           {/* Original price — strikethrough */}
           {plan.originalPrice && (
             <p className={["mt-1 font-sans text-sm line-through", isPopular ? "text-white/30" : "text-black/25"].join(" ")}>
-              ${plan.originalPrice} {plan.period}
+              ${plan.originalPrice} {plan.currency} {plan.period}
             </p>
           )}
 
