@@ -36,7 +36,7 @@ export function TopBanner() {
 
             {/* H1 */}
             <h1 className="font-display text-[clamp(2.4rem,6vw,4.5rem)] font-bold leading-[1.06] tracking-tight text-black">
-              Turn receipts into CRA-ready reports — automatically.
+              Turn receipts into CRA-ready reports — automatically<span className="text-[#f97316]">.</span>
             </h1>
 
             {/* Subheadline — both paragraphs same size and color */}
