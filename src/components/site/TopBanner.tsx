@@ -61,7 +61,7 @@ export function TopBanner() {
 
             {/* Store badges — single horizontal line */}
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <span className="font-sans text-sm text-black/45">Available on:</span>
+              <span className="font-sans text-sm text-black/55">Available on:</span>
               <a
                 href={APP_STORE_URL}
                 target="_blank"
