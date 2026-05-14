@@ -92,15 +92,24 @@ export function TopBanner() {
             </div>
 
             {/* Social proof */}
-            <div className="mt-7 flex flex-col items-center gap-1 lg:items-center">
-              <div className="flex items-center gap-0.5" aria-label="5 out of 5 stars">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <StarIcon key={i} className="h-[13px] w-[13px] text-[#f97316]" />
-                ))}
+            <div className="mt-7 flex items-center gap-2">
+              <div className="flex shrink-0 items-center">
+                <Avatar src={avatar1} alt="User 1" />
+                <Avatar src={avatar2} alt="User 2" offset />
+                <Avatar src={avatar3} alt="User 3" offset />
+                <Avatar src={avatar4} alt="User 4" offset />
               </div>
-              <p className="font-sans text-sm text-black/55">
-                Over <span className="font-semibold text-black">3,000 users</span>
-              </p>
+              <div className="flex flex-col gap-0.5">
+                <div className="flex items-center gap-0.5" aria-label="5 out of 5 stars">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <StarIcon key={i} className="h-[13px] w-[13px] text-[#f97316]" />
+                  ))}
+                </div>
+                <p className="font-sans text-sm leading-snug text-black/55">
+                  Over <span className="font-semibold text-black">3,000 users</span>{" "}
+                  keeping more of what they earn
+                </p>
+              </div>
             </div>
 
           </div>
