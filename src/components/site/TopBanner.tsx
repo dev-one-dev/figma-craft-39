@@ -25,114 +25,109 @@ function scrollToPricing(e: React.MouseEvent) {
 
 export function TopBanner() {
   return (
-    <section className="relative w-full px-4 pt-20 sm:px-6 sm:pt-24 lg:px-8 lg:pt-28">
+    <section className="relative w-full overflow-visible px-4 pt-20 sm:px-6 sm:pt-24 lg:px-8 lg:pt-28">
       <div className="mx-auto w-full max-w-[1200px]">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
 
           {/* ── LEFT COLUMN ── */}
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
 
-            {/* Trial pill */}
-            <span className="inline-flex items-center rounded-full bg-[#f97316] px-3 py-1 font-display text-xs font-semibold text-white">
-              7-day free trial
-            </span>
-
             {/* H1 */}
-            <h1 className="mt-4 font-display text-[clamp(2.4rem,6vw,4.5rem)] font-bold leading-[1.06] tracking-tight text-black">
+            <h1 className="font-display text-[clamp(2.4rem,6vw,4.5rem)] font-bold leading-[1.06] tracking-tight text-black">
               Reports, automatically.
             </h1>
 
-            {/* Subheadline */}
-            <div className="mt-5 max-w-[520px] font-sans">
-              <p className="text-lg leading-relaxed text-black/70 sm:text-xl">
+            {/* Subheadline — both paragraphs same size and color */}
+            <div className="mt-5 max-w-[500px] font-sans">
+              <p className="text-lg leading-relaxed text-black/55 sm:text-xl">
                 Snap receipts &amp; mileage, organize expenses, and export audit-ready reports.
               </p>
-              <p className="mt-2 text-base leading-relaxed text-black/50 sm:text-lg">
+              <p className="mt-2 text-lg leading-relaxed text-black/55 sm:text-xl">
                 Built for Canadian freelancers, contractors, and small businesses.
               </p>
             </div>
 
-            {/* CTA */}
-            <div className="mt-7">
+            {/* CTA — black */}
+            <div className="mt-8">
               <a
                 href="#pricing"
                 onClick={scrollToPricing}
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#f97316] px-8 py-4 font-display text-base font-semibold text-white shadow-[0_8px_24px_rgba(249,115,22,0.28)] transition-all hover:bg-[#ea6a10] hover:shadow-[0_10px_30px_rgba(249,115,22,0.35)]"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-black px-8 py-4 font-display text-base font-semibold text-white shadow-[0_8px_28px_rgba(0,0,0,0.18)] transition-all hover:scale-[1.02] hover:opacity-90"
               >
                 Claim your free trial
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" aria-hidden />
               </a>
             </div>
 
-            {/* Store badges */}
-            <div className="mt-6 flex flex-col items-center gap-3 lg:items-start">
-              <span className="font-sans text-sm text-black/50">Available on:</span>
-              <div className="flex items-center gap-2.5">
-                <a
-                  href={APP_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Download ReceiptOne on the App Store"
-                  className="inline-flex h-10 items-center gap-2 rounded-xl border border-black/12 bg-black px-3.5 font-display text-white transition-opacity hover:opacity-80"
-                >
-                  <AppleGlyph className="h-[18px] w-[18px] shrink-0" />
-                  <span className="flex flex-col items-start">
-                    <span className="text-[8px] font-normal leading-none text-white/60">Download on the</span>
-                    <span className="text-[12px] font-semibold leading-tight">App Store</span>
-                  </span>
-                </a>
-                <a
-                  href={GOOGLE_PLAY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Get ReceiptOne on Google Play"
-                  className="inline-flex h-10 items-center gap-2 rounded-xl border border-black/12 bg-white px-3.5 font-display text-black shadow-sm transition-opacity hover:opacity-80"
-                >
-                  <GooglePlayMark className="h-[18px] w-[18px] shrink-0" />
-                  <span className="flex flex-col items-start">
-                    <span className="text-[8px] font-normal leading-none text-black/50">GET IT ON</span>
-                    <span className="text-[12px] font-semibold leading-tight">Google Play</span>
-                  </span>
-                </a>
-              </div>
+            {/* Store badges — single horizontal line */}
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <span className="font-sans text-sm text-black/45">Available on:</span>
+              <a
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download ReceiptOne on the App Store"
+                className="inline-flex h-10 items-center gap-2 rounded-xl border border-black/12 bg-black px-3.5 font-display text-white transition-opacity hover:opacity-80"
+              >
+                <AppleGlyph className="h-[18px] w-[18px] shrink-0" />
+                <span className="flex flex-col items-start">
+                  <span className="text-[8px] font-normal leading-none text-white/60">Download on the</span>
+                  <span className="text-[12px] font-semibold leading-tight">App Store</span>
+                </span>
+              </a>
+              <a
+                href={GOOGLE_PLAY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Get ReceiptOne on Google Play"
+                className="inline-flex h-10 items-center gap-2 rounded-xl border border-black/12 bg-white px-3.5 font-display text-black shadow-sm transition-opacity hover:opacity-80"
+              >
+                <GooglePlayMark className="h-[18px] w-[18px] shrink-0" />
+                <span className="flex flex-col items-start">
+                  <span className="text-[8px] font-normal leading-none text-black/50">GET IT ON</span>
+                  <span className="text-[12px] font-semibold leading-tight">Google Play</span>
+                </span>
+              </a>
             </div>
 
             {/* Social proof */}
-            <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
-              <div className="flex items-center">
-                <Avatar src={avatar1} alt="User 1" />
-                <Avatar src={avatar2} alt="User 2" offset />
-                <Avatar src={avatar3} alt="User 3" offset />
-                <Avatar src={avatar4} alt="User 4" offset />
-              </div>
-              <div className="flex items-center gap-0.5" aria-label="5 out of 5 stars">
+            <div className="mt-7 flex flex-col items-center gap-2 lg:items-start">
+              <div className="flex items-center gap-1" aria-label="5 out of 5 stars">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <StarIcon key={i} className="h-4 w-4 text-[#f97316]" />
+                  <StarIcon key={i} className="h-[14px] w-[14px] text-[#f97316]" />
                 ))}
               </div>
-              <p className="font-display text-sm text-black/70 sm:text-[15px]">
-                Over <span className="font-semibold text-black">3,000 users</span> keeping more of what they earn
-              </p>
+              <div className="flex items-center gap-2">
+                <div className="flex items-center">
+                  <Avatar src={avatar1} alt="User 1" />
+                  <Avatar src={avatar2} alt="User 2" offset />
+                  <Avatar src={avatar3} alt="User 3" offset />
+                  <Avatar src={avatar4} alt="User 4" offset />
+                </div>
+                <p className="font-sans text-sm text-black/55">
+                  Over <span className="font-semibold text-black">3,000 users</span> keeping more of what they earn
+                </p>
+              </div>
             </div>
 
           </div>
 
           {/* ── RIGHT COLUMN — Mascot ── */}
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex items-center justify-center overflow-visible">
             {/* Radial glow */}
             <div
-              className="pointer-events-none absolute inset-x-12 inset-y-8 rounded-full bg-[#f97316]/[0.07] blur-3xl"
+              className="pointer-events-none absolute inset-0 scale-110 rounded-full bg-[#f97316]/[0.08] blur-[80px]"
               aria-hidden
             />
             {/* Ground shadow */}
             <div
-              className="pointer-events-none absolute bottom-[4%] left-1/2 h-6 w-3/5 -translate-x-1/2 rounded-full bg-black/[0.10] blur-2xl"
+              className="pointer-events-none absolute bottom-[3%] left-1/2 h-10 w-4/5 -translate-x-1/2 rounded-full bg-black/[0.13] blur-3xl"
               aria-hidden
             />
-            {/* Mascot */}
+            {/* Mascot — scaled up to dominate right side */}
             <video
               style={{ filter: "brightness(1.15) contrast(1.08)" }}
-              className="relative w-full object-contain mix-blend-multiply"
+              className="relative w-[140%] max-w-none object-contain mix-blend-multiply"
               autoPlay
               loop
               muted
