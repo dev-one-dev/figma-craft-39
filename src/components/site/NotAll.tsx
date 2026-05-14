@@ -64,29 +64,31 @@ export function NotAll() {
           {FEATURES.map((f) => (
             <div
               key={f.title}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-black/[0.07] bg-white shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.10)]"
+              className={"comingSoon" in f && f.comingSoon ? "relative pt-4" : ""}
             >
               {"comingSoon" in f && f.comingSoon && (
-                <span className="absolute right-4 top-4 rounded-full bg-black/[0.06] px-2.5 py-1 font-sans text-[11px] font-medium tracking-wide text-black/40">
+                <span className="absolute top-0 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#f97316] px-4 py-1 font-sans text-xs font-semibold text-white shadow-[0_4px_12px_rgba(249,115,22,0.4)]">
                   Coming soon
                 </span>
               )}
-              <div className="p-6 sm:p-8">
-                <h3 className="font-display text-xl font-semibold leading-snug text-black sm:text-2xl">
-                  {f.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-black/55">
-                  {f.desc}
-                </p>
-              </div>
-              <div className="mt-auto flex justify-center px-6 pt-2">
-                <img
-                  src={f.img}
-                  alt={f.alt}
-                  className="h-48 w-auto object-contain object-bottom transition-transform duration-300 group-hover:scale-[1.04] sm:h-52"
-                  loading="lazy"
-                  draggable={false}
-                />
+              <div className="group flex flex-col overflow-hidden rounded-2xl border border-black/[0.07] bg-white shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(0,0,0,0.10)]">
+                <div className="p-6 sm:p-8">
+                  <h3 className="font-display text-xl font-semibold leading-snug text-black sm:text-2xl">
+                    {f.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-black/55">
+                    {f.desc}
+                  </p>
+                </div>
+                <div className="mt-auto flex justify-center px-6 pt-2">
+                  <img
+                    src={f.img}
+                    alt={f.alt}
+                    className="h-48 w-auto object-contain object-bottom transition-transform duration-300 group-hover:scale-[1.04] sm:h-52"
+                    loading="lazy"
+                    draggable={false}
+                  />
+                </div>
               </div>
             </div>
           ))}
