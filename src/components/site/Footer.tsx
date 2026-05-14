@@ -110,7 +110,7 @@ export function Footer({ region = "ca" }: FooterProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Download ReceiptOne on the App Store"
-                className="inline-flex h-9 items-center gap-2 rounded-xl border border-white/15 bg-white/[0.07] px-3 font-display text-white transition-colors hover:bg-white/[0.13]"
+                className="inline-flex h-9 w-[132px] items-center gap-2 rounded-xl border border-white/15 bg-white/[0.07] px-3 font-display text-white transition-colors hover:bg-white/[0.13]"
               >
                 <FooterAppleGlyph />
                 <span className="flex flex-col items-start">
@@ -123,7 +123,7 @@ export function Footer({ region = "ca" }: FooterProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Get ReceiptOne on Google Play"
-                className="inline-flex h-9 items-center gap-2 rounded-xl border border-white/15 bg-white/[0.07] px-3 font-display text-white transition-colors hover:bg-white/[0.13]"
+                className="inline-flex h-9 w-[132px] items-center gap-2 rounded-xl border border-white/15 bg-white/[0.07] px-3 font-display text-white transition-colors hover:bg-white/[0.13]"
               >
                 <FooterGooglePlayMark />
                 <span className="flex flex-col items-start">
