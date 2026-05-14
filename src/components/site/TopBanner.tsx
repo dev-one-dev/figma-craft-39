@@ -68,7 +68,7 @@ export function TopBanner() {
                 draggable={false}
                 className="pointer-events-none absolute hidden select-none lg:block"
                 style={{
-                  width: 130,
+                  width: 260,
                   left: "calc(100% + 6px)",
                   top: "50%",
                   transform: "translateY(-98%)",
@@ -80,8 +80,8 @@ export function TopBanner() {
                 draggable={false}
                 className="pointer-events-none absolute hidden select-none lg:block"
                 style={{
-                  width: 104,
-                  left: "calc(100% + 138px)",
+                  width: 208,
+                  left: "calc(100% + 264px)",
                   top: "50%",
                   transform: "translateY(-50%)",
                 }}
