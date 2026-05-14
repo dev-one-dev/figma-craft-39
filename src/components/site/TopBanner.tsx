@@ -134,7 +134,7 @@ export function TopBanner() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Download ReceiptOne on the App Store"
-              className="inline-flex h-10 w-[142px] items-center gap-2 rounded-xl border border-black/12 bg-black px-3.5 font-display text-white transition-opacity hover:opacity-80"
+              className="inline-flex h-10 items-center gap-2 rounded-xl border border-black/12 bg-black px-3.5 font-display text-white transition-opacity hover:opacity-80"
             >
               <AppleGlyph className="h-[18px] w-[18px] shrink-0" />
               <span className="flex flex-col items-start">
@@ -147,7 +147,7 @@ export function TopBanner() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Get ReceiptOne on Google Play"
-              className="inline-flex h-10 w-[142px] items-center gap-2 rounded-xl border border-black/12 bg-white px-3.5 font-display text-black shadow-sm transition-opacity hover:opacity-80"
+              className="inline-flex h-10 items-center gap-2 rounded-xl border border-black/12 bg-white px-3.5 font-display text-black shadow-sm transition-opacity hover:opacity-80"
             >
               <GooglePlayMark className="h-[18px] w-[18px] shrink-0" />
               <span className="flex flex-col items-start">
